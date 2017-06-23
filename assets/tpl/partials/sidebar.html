@@ -1,24 +1,24 @@
 <aside class="sidebar fixed">
   <div class="brand-logo">
     <div id="logo">
-      <div class="foot1"></div>
+      <!--<div class="foot1"></div>
       <div class="foot2"></div>
       <div class="foot3"></div>
-      <div class="foot4"></div>
+      <div class="foot4"></div>-->
+      <img src="assets/img/lfs-logo.png" class="img-responsive">
     </div>
-    LFS
   </div>
   <div class="user-logged-in">
     <div class="content">
       <div class="user-name">Username</div>
       <div class="user-actions">
-        dd/mm/aaaa
+        30/06/2017
       </div>
     </div>
   </div>
   <ul class="menu-links" ng-cloak>
-    <a menu-link href="#/dashboard" icon="md md-blur-on">Concursos</a>
-    <li menu-toggle path="/apps" name="APPS" icon="md md-camera">
+    <a menu-link href="#/dashboard" icon="md md-dashboard">Incio</a>
+    <!--<li menu-toggle path="/apps" name="APPS" icon="md md-camera">
       <a menu-link href="#/apps/todo" name="Todo">
         <span id="todosCount" class="pull-right badge z-depth-0" ng-bind="todosCount"></span>
         Todo
@@ -27,18 +27,12 @@
         <span class="pull-right badge theme-primary-bg z-depth-0">9</span>
         Crud
       </a>
+    </li>-->
+    <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel">
+      <a menu-link href="#/concursos/concursos-configurar">Configurar</a>
+      <a menu-link href="#/concursos/concursos-detalle">Detalle</a>
     </li>
-    <li menu-toggle path="/ui-elements" name="UI elements" icon="md md-photo">
-      <a menu-link href="#/ui-elements/cards">Cards</a>
-      <a menu-link href="#/ui-elements/colors">Color</a>
-      <a menu-link href="#/ui-elements/grid">Grid</a>
-      <a menu-link href="#/ui-elements/icons">Icons material design</a>
-      <a menu-link href="#/ui-elements/weather-icons">Icons weather</a>
-      <a menu-link href="#/ui-elements/lists">Lists</a>
-      <a menu-link href="#/ui-elements/typography">Typography</a>
-      <a menu-link href="#/ui-elements/messages">Messages &amp; Notifications</a>
-      <a menu-link href="#/ui-elements/buttons">Buttons</a>
-    </li>
+    <!--
     <li menu-toggle path="/forms" name="Forms" icon="md md-input">
       <a menu-link href="#/forms/basic">Basic forms</a>
       <a menu-link href="#/forms/advanced">Advanced elements</a>
@@ -60,6 +54,6 @@
       <a target="_blank" href="pages/500.html">500</a>
       <a target="_blank" href="pages/material-bird.html">Easter Egg</a>
     </li>
-    <a menu-link href="#/documentation" icon="md md-insert-drive-file">Documentation</a><!--@grep dist-->
+    <a menu-link href="#/documentation" icon="md md-insert-drive-file">Documentation</a>-->
   </ul>
 </aside>
