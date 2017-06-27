@@ -8,35 +8,55 @@
             En esta sección podrás configurar y/o editar la configuración de un concurso siempre y cuando no esté activo.
         </p>
     </div>
-    <div class="row m-b-10" id="datepickers">
-        <div class="col-md-12">
-            <div class="well white">
-                <form class="form-floating placeholder-form">
+    <div class="row m-b-20">
+        <form class="form-floating placeholder-form">
+            <div class="col-md-12">
+                <div class="well white">
                     <fieldset>
                         <legend><i class="md md-filter-1"></i> Fecha del concurso</legend>
-                        <div class="form-group filled-static">
-                            <label for="inputEmail" class="control-label">Elije mes y año</label>
-                            <input type="month" class="form-control">
-                            <span class="help-block">Haz click y selecciona con las flechas arriba y abajo del teclado</span>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        <div class="col-lg-6">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">Mes</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Enero</option>
+                                        <option>Febrero</option>
+                                        <option>Marzo</option>
+                                        <option>Abril</option>
+                                        <option>Mayo</option>
+                                        <option>Junio</option>
+                                        <option>Julio</option>
+                                        <option>Agosto</option>
+                                        <option>Septiembre</option>
+                                        <option>Octubre</option>
+                                        <option>Noviembre</option>
+                                        <option>Diciembre</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-timer"></i> Año</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row m-b-20">
-        <div class="col-md-6">
-            <div class="well white">
-                <form class="form-floating placeholder-form">
+            <div class="col-md-6">
+                <div class="well white">
                     <fieldset>
                         <legend><i class="md md-filter-2"></i> Series y tiempo</legend>
-                        <div class="row">
-                            <div class="col-sm-6">
+                        <div class="row amber lighten-5 m-5">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para el nivel 1</label>
+                                    <label class="control-label">Series para Nv1</label>
                                     <select class="form-control">
                                         <option>10</option>
                                         <option>11</option>
@@ -47,9 +67,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo de respuesta para nivel 1</label>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv1</label>
                                     <select class="form-control">
                                         <option>5 segundos</option>
                                         <option>10 segundos</option>
@@ -58,10 +78,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
+                        <div class="row lime lighten-5 m-5">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para el nivel 2</label>
+                                    <label class="control-label">Series para Nv2</label>
                                     <select class="form-control">
                                         <option>10</option>
                                         <option>11</option>
@@ -72,9 +92,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo de respuesta para nivel 2</label>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv2</label>
                                     <select class="form-control">
                                         <option>5 segundos</option>
                                         <option>10 segundos</option>
@@ -83,10 +103,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
+                        <div class="row cyan lighten-5 m-5">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para el nivel 3</label>
+                                    <label class="control-label">Series para Nv3</label>
                                     <select class="form-control">
                                         <option>10</option>
                                         <option>11</option>
@@ -97,9 +117,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo de respuesta para nivel 3</label>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv3</label>
                                     <select class="form-control">
                                         <option>5 segundos</option>
                                         <option>10 segundos</option>
@@ -108,10 +128,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
+                        <div class="row purple lighten-5 m-5">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para el nivel 4</label>
+                                    <label class="control-label">Series para Nv4</label>
                                     <select class="form-control">
                                         <option>10</option>
                                         <option>11</option>
@@ -122,9 +142,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo de respuesta para nivel 4</label>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv4</label>
                                     <select class="form-control">
                                         <option>5 segundos</option>
                                         <option>10 segundos</option>
@@ -133,10 +153,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
+                        <div class="row pink lighten-5 m-5">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para el nivel 5</label>
+                                    <label class="control-label">Series para Nv5</label>
                                     <select class="form-control">
                                         <option>10</option>
                                         <option>11</option>
@@ -147,9 +167,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo de respuesta para nivel 5</label>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv5</label>
                                     <select class="form-control">
                                         <option>5 segundos</option>
                                         <option>10 segundos</option>
@@ -157,57 +177,166 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <button type="reset" class="btn btn-default">Limpiar</button>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="well white">
-                <form class="form-floating placeholder-form">
+            <div class="col-md-6">
+                <div class="well white">
                     <fieldset>
                         <legend><i class="md md-filter-3"></i> Recompensas</legend>
-                        <div class="row p-v-10">
-                            <div class="col-md-12">
-                                <p><span class="f14 w200 p-r-20">Recompensa para los ganadores del Nivel 1:</span> <span class="f14 w600 p-r-20">50 bebidas (Starbucks)</span> 
-                                <button type="button" class="btn btn-sm btn-primary" data-animation="am-fade-and-slide-top" data-template-url="assets/tpl/concursos/modal-recompensas.html" bs-modal="modal">Reconfigurar</button></p>
+                        <div class="row amber lighten-5 m-5">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Recompensa activa 1</option>
+                                        <option>Recompensa activa 2</option>
+                                        <option>Recompensa activa 3</option>
+                                        <option>Recompensa activa 4</option>
+                                        <option>Recompensa activa 5</option>
+                                    </select>
+                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>10 unidades</option>
+                                        <option>20 unidades</option>
+                                        <option>30 unidades</option>
+                                        <option>40 unidades</option>
+                                        <option>50 unidades</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="row p-v-10">
-                            <div class="col-md-12">
-                                <p><span class="f14 w200 p-r-20">Recompensa para los ganadores del Nivel 2:</span> <span class="f14 w600 p-r-20">50 bebidas (Starbucks)</span> 
-                                <button type="button" class="btn btn-sm btn-primary" data-animation="am-fade-and-slide-top" data-template-url="assets/tpl/concursos/modal-recompensas.html" bs-modal="modal">Reconfigurar</button></p>
+                        <div class="row lime lighten-5 m-5">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Recompensa activa 1</option>
+                                        <option>Recompensa activa 2</option>
+                                        <option>Recompensa activa 3</option>
+                                        <option>Recompensa activa 4</option>
+                                        <option>Recompensa activa 5</option>
+                                    </select>
+                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>10 unidades</option>
+                                        <option>20 unidades</option>
+                                        <option>30 unidades</option>
+                                        <option>40 unidades</option>
+                                        <option>50 unidades</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="row p-v-10">
-                            <div class="col-md-12">
-                                <p><span class="f14 w200 p-r-20">Recompensa para los ganadores del Nivel 3:</span> <span class="f14 w600 p-r-20">No se ha seleccionado</span> 
-                                <button type="button" class="btn btn-sm btn-primary" data-animation="am-fade-and-slide-top" data-template-url="assets/tpl/concursos/modal-recompensas.html" bs-modal="modal">Configurar</button></p>
+                        <div class="row cyan lighten-5 m-5">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Recompensa activa 1</option>
+                                        <option>Recompensa activa 2</option>
+                                        <option>Recompensa activa 3</option>
+                                        <option>Recompensa activa 4</option>
+                                        <option>Recompensa activa 5</option>
+                                    </select>
+                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>10 unidades</option>
+                                        <option>20 unidades</option>
+                                        <option>30 unidades</option>
+                                        <option>40 unidades</option>
+                                        <option>50 unidades</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="row p-v-10">
-                            <div class="col-md-12">
-                                <p><span class="f14 w200 p-r-20">Recompensa para los ganadores del Nivel 4:</span> <span class="f14 w600 p-r-20">No se ha seleccionado</span> 
-                                <button type="button" class="btn btn-sm btn-primary" data-animation="am-fade-and-slide-top" data-template-url="assets/tpl/concursos/modal-recompensas.html" bs-modal="modal">Configurar</button></p>
+                        <div class="row purple lighten-5 m-5">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Recompensa activa 1</option>
+                                        <option>Recompensa activa 2</option>
+                                        <option>Recompensa activa 3</option>
+                                        <option>Recompensa activa 4</option>
+                                        <option>Recompensa activa 5</option>
+                                    </select>
+                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>10 unidades</option>
+                                        <option>20 unidades</option>
+                                        <option>30 unidades</option>
+                                        <option>40 unidades</option>
+                                        <option>50 unidades</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="row p-v-10">
-                            <div class="col-md-12">
-                                <p><span class="f14 w200 p-r-20">Recompensa para los ganadores del Nivel 5:</span> <span class="f14 w600 p-r-20">No se ha seleccionado</span> 
-                                <button type="button" class="btn btn-sm btn-primary" data-animation="am-fade-and-slide-top" data-template-url="assets/tpl/concursos/modal-recompensas.html" bs-modal="modal">Configurar</button></p>
+                        <div class="row pink lighten-5 m-5">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>Recompensa activa 1</option>
+                                        <option>Recompensa activa 2</option>
+                                        <option>Recompensa activa 3</option>
+                                        <option>Recompensa activa 4</option>
+                                        <option>Recompensa activa 5</option>
+                                    </select>
+                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
+                                    <select class="form-control">
+                                        <option>Elije</option>
+                                        <option>10 unidades</option>
+                                        <option>20 unidades</option>
+                                        <option>30 unidades</option>
+                                        <option>40 unidades</option>
+                                        <option>50 unidades</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <button type="reset" class="btn btn-default">Limpiar</button>
+                        <div class="form-group pull-right">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="reset" class="btn btn-default">Cancelar</button>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </section>
