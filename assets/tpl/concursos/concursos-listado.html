@@ -1,0 +1,134 @@
+<section ng-controller="TablesBasicController">
+    <div class="page-header">
+        <h1><i class="md md-visibility"></i> Listado de concursos</h1>
+        <p class="lead">
+            En esta sección podrás visualizar el listado de todos los concursos creados
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-lg-9">
+            <div class="row no-m">
+                <div class="well white">
+                    <h3 class="table-title p-20">Concursos</h3>
+                    <table class="table table-full table-full-small">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Clave</th>
+                                <th class="text-center">Inicio</th>
+                                <th class="text-center">Término</th>
+                                <th class="text-center">Participantes</th>
+                                <th class="text-center">Premios asignados</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">KUNI201707</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">31/07/2017</td>
+                                <td class="text-center">12,308</td>
+                                <td class="text-center">280</td>
+                                <td class="text-center"><span class="label label-default">Finalizado</span></td>
+                                <td class="text-center">
+                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">KUNI201707</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">31/07/2017</td>
+                                <td class="text-center">12,308</td>
+                                <td class="text-center">280</td>
+                                <td class="text-center"><span class="label label-success">Activo</span></td>
+                                <td class="text-center">
+                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">KUNI201707</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">31/07/2017</td>
+                                <td class="text-center">12,308</td>
+                                <td class="text-center">280</td>
+                                <td class="text-center"><span class="label label-info">Programado</span></td>
+                                <td class="text-center">
+                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
+                                    <a href="#/concursos/concursos-configurar"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">KUNI201707</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">31/07/2017</td>
+                                <td class="text-center">12,308</td>
+                                <td class="text-center">280</td>
+                                <td class="text-center"><span class="label label-warning">Pendiente</span></td>
+                                <td class="text-center">
+                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
+                                    <a href="#/concursos/concursos-configurar"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="help-block text-right">
+                        <i class="md md-visibility"></i> Ver detalles |
+                        <i class="md md md-mode-edit"></i> Editar concurso
+                    </span>
+                    <div class="row no-gutter">
+                        <div class="form-group pull-right">
+                            <a href="#/concursos/concursos-configurar"><button type="submit" class="btn btn-primary">Agregar un concurso</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="well white">
+                <fieldset>
+                    <legend><i class="md md-filter-list"></i> Filtros</legend>
+                    <div class="form-group">
+                        <label class="control-label">Estatus</label>
+                        <select class="form-control">
+                            <option>Elije</option>
+                            <option>Finalizado</option>
+                            <option>Pendiente</option>
+                            <option>Programado</option>
+                            <option>Activo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mes de realización</label>
+                        <select class="form-control">
+                            <option>Elije</option>
+                            <option>Enero</option>
+                            <option>Febrero</option>
+                            <option>Marzo</option>
+                            <option>Abril</option>
+                            <option>Mayo</option>
+                            <option>Junio</option>
+                            <option>Julio</option>
+                            <option>Agosto</option>
+                            <option>Septiembre</option>
+                            <option>Octubre</option>
+                            <option>Noviembre</option>
+                            <option>Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Año de realización</label>
+                        <select class="form-control">
+                            <option>Elije</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                        </select>
+                    </div>
+                    <div class="form-group pull-right">
+                        <button type="submit" class="btn btn-info">Filtrar</button>
+                        <button type="reset" class="btn btn-default">Cancelar</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</section>

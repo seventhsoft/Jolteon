@@ -1,1 +1,112 @@
-listado de patrocinadoresa
+<section ng-controller="TablesBasicController">
+    <div class="page-header">
+        <h1><i class="md md-visibility"></i> Listado de patrocinadores</h1>
+        <p class="lead">
+            En esta sección podrás visualizar el listado de todos los patrocinadores creados
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-lg-9">
+            <div class="row no-m">
+                <div class="well white">
+                    <h3 class="table-title p-20">Patrocinadores</h3>
+                    <table class="table table-full table-full-small">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Patrocinador</th>
+                                <th class="text-center">Fecha de alta</th>
+                                <th class="text-center">Contacto</th>
+                                <th class="text-center">Teléfono</th>
+                                <th class="text-center">Preguntas-mensaje</th>
+                                <th class="text-center">Patrocinios</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">Starbucks SA. de CV.</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">John Doe</td>
+                                <td class="text-center">55 5555 5555</td>
+                                <td class="text-center">10</td>
+                                <td class="text-center">120</td>
+                                <td class="text-center"><span class="label label-success">Activo</span></td>
+                                <td class="text-center">
+                                    <a href="#/patrocinadores/patrocinadores-detalle">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
+                                    </a>
+                                    <a href="#/patrocinadores/patrocinadores-recompensas-agregar">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-my-library-add"></i></button>
+                                    </a>
+                                    <a href="#/patrocinadores/patrocinadores-pregunta_mensaje-agregar">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-note-add"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Office Depot</td>
+                                <td class="text-center">01/07/2017</td>
+                                <td class="text-center">Jane Doe</td>
+                                <td class="text-center">55 6666 5555</td>
+                                <td class="text-center">4</td>
+                                <td class="text-center">0</td>
+                                <td class="text-center"><span class="label label-default">Inactivo</span></td>
+                                <td class="text-center">
+                                    <a href="#/patrocinadores/patrocinadores-detalle">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
+                                    </a>
+                                    <a href="#/patrocinadores/patrocinadores-recompensas-agregar">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-my-library-add"></i></button>
+                                    </a>
+                                    <a href="#/patrocinadores/patrocinadores-pregunta_mensaje-agregar">
+                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-note-add"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="help-block text-right">
+                    	<i class="md md-visibility"></i> Ver detalles |
+                    	<i class="md md-my-library-add"></i> Agregar recompensa | 
+                    	<i class="md md-note-add"></i> Agregar pregunta mensaje
+                    </span>
+                    <div class="row no-gutter">
+                        <div class="form-group pull-right">
+                            <a href="#/patrocinadores/patrocinadores-agregar">
+                                <button type="submit" class="btn btn-primary">Agregar patrocinador</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="well white">
+                <fieldset>
+                    <legend><i class="md md-filter-list"></i> Filtros</legend>
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+                        <select class="form-control">
+                            <option>Elije</option>
+                            <option>Activo</option>
+                            <option>Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Patrocinios</label>
+                        <select class="form-control">
+                            <option>Elije</option>
+                            <option>Si</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="form-group pull-right">
+                        <button type="submit" class="btn btn-info">Filtrar</button>
+                        <button type="reset" class="btn btn-default">Cancelar</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</section>
