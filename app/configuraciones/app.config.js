@@ -2,7 +2,7 @@
 angular.module("kuni")
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-    templateUrl: 'app/dashboard.html'
+    templateUrl: 'app/inicio/dashboard.html'
   }).when('/:folder/:tpl', {
       templateUrl: function(attr){
         return 'app/' + attr.folder + '/' + attr.tpl + '.html';
