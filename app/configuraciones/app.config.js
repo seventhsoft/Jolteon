@@ -1,43 +1,32 @@
 // routes
-app.config(['$routeProvider', function($routeProvider) {
+angular.module("kuni")
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
-    templateUrl: 'assets/tpl/dashboard.html'
+    templateUrl: 'app/dashboard.html'
   }).when('/:folder/:tpl', {
       templateUrl: function(attr){
-        return 'assets/tpl/' + attr.folder + '/' + attr.tpl + '.html';
+        return 'app/' + attr.folder + '/' + attr.tpl + '.html';
       }
     }).when('/:tpl', {
       templateUrl: function(attr){
-        return 'assets/tpl/' + attr.tpl + '.html';
+        return 'app/' + attr.tpl + '.html';
       }
     }).otherwise({ redirectTo: '/' });
 }])
-
-// google maps
-.config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
-  uiGmapGoogleMapApiProvider.configure({
-    //    key: 'your api key',
-    v: '3.17',
-    libraries: 'weather,geometry,visualization'
-  });
-}])
-
 // loading bar settings
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;
   cfpLoadingBarProvider.latencyThreshold = 300;
 }])
-
 // defaults for date picker
 .config(['$datepickerProvider', function($datepickerProvider) {
   angular.extend($datepickerProvider.defaults, {
     dateFormat: 'dd/MM/yyyy',
     iconLeft: 'md md-chevron-left',
     iconRight: 'md md-chevron-right',
-    autoclose: true,
+    autoclose: true
   });
 }])
-
 // defaults for date picker
 .config(['$timepickerProvider', function($timepickerProvider) {
   angular.extend($timepickerProvider.defaults, {
@@ -50,13 +39,9 @@ app.config(['$routeProvider', function($routeProvider) {
     modelTimeFormat: 'HH:mm'
   });
 }])
-
 // disable nganimate with adding class
 .config(['$animateProvider', function($animateProvider) {
   $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/);
 }])
-
 // set constants
-.run(['$rootScope', 'APP', function ($rootScope, APP) {
-  $rootScope.APP = APP;
-}]);
+.run(['$rootScope', function (){}]);
