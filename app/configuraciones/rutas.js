@@ -1,7 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
+(function () { 
+    'use strict';
+    angular
+    .module("kuni")
+    .constant('Rutas',{
+        RUTABK : 'http://localhost:8080/SEPI-Backend',
+        RUTAFR : 'http://localhost:8383/LSF-FRONT'
+    });
+})();

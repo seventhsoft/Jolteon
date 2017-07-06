@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "tipo": "error",
+        "titulo": "Aviso.",
+        "mensaje": "Esta funcionalidad aun no esta implementada.",
+        "duracion": 4000
+    }
+]

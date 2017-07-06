@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "titulo": "Acciones del sistema",
+        "mensaje": "Ingreso al sistema."
+       
+    },
+    {
+        "id":2,
+        "titulo": "Acciones del sistema",
+        "mensaje": "Cierra sesión"
+    }
+]
