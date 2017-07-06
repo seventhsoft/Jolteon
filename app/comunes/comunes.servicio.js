@@ -7,11 +7,12 @@
     ComunesServicio.$inject = ['$http','Rutas'];
     function ComunesServicio($http,Rutas){
         var servicio = {
-            mensajes : mensajes
+            mensajes : mensajes,
+            bitacora : bitacora
         };
         return servicio;
         function mensajes(id){
-          var ruta = Rutas.RUTAFR + "/app/comunes/comunes.mensajes.json";
+            var ruta = Rutas.RUTAFR + "/app/comunes/comunes.mensajes.json";
             $http.get(ruta)
             .then(
                 function(response){
@@ -20,6 +21,23 @@
                         var msg = response.data[i];
                         if(id === msg.id){
                             mensaje(msg.tipo,msg.titulo,msg.mensaje,msg.duracion);
+                            break;
+                        };
+                    };
+                }
+            );  
+        };
+        
+        function bitacora(id){
+            var ruta = Rutas.RUTAFR + "/app/comunes/comunes.bitacora.json";
+            $http.get(ruta)
+            .then(
+                function(response){
+                    response.data;
+                    for(var i =0; i<response.data.length; i++){
+                        var bitacora = response.data[i];
+                        if(id === bitacora.id){
+                            /* serivcio de la bitacora */
                             break;
                         };
                     };
