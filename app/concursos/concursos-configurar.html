@@ -1,9 +1,9 @@
 <section class="forms-advanced" ng-controller="ConcursosConfigurarControlador as ccc">
     <div class="page-header">
         <h1>
-      <i class="md md-settings"></i>
-      Configuración de concurso
-    </h1>
+            <i class="md md-settings"></i>
+            Configuración de concurso
+        </h1>
         <p class="lead">
             En esta sección podrás configurar y/o editar la configuración de un concurso siempre y cuando no esté activo.
         </p>
@@ -12,13 +12,14 @@
         <form class="form-floating placeholder-form">
             <div class="col-md-12">
                 <div class="well white">
+                    <h4><i class="md md-filter-1"></i> Fecha del concurso</h4>
+
                     <fieldset>
-                        <legend><i class="md md-filter-1"></i> Fecha del concurso</legend>
                         <div class="col-lg-6">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label class="control-label">Mes</label>
-                                    <select class="form-control" ng-model="ccc.mes">
+                                    <label class="control-label normal">Mes</label>
+                                    <select class="form-control" ng-model="ccc.concurso.mes">
                                         <option value="">Elije</option>
                                         <option value="01">Enero</option>
                                         <option value="02">Febrero</option>
@@ -37,201 +38,89 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> Año</label>
+                                    <label class="control-label normal"><i class="md md-timer"></i> Año</label>
                                     <select class="form-control" 
-                                            ng-model="ccc.anio" 
+                                            ng-model="ccc.concurso.anio" 
                                             ng-options="anio.valor as anio.descripcion for anio in ccc.listaAnios">
                                         <option value="">Selecciona</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well white">
-                    <fieldset>
-                        <legend><i class="md md-filter-2"></i> Series y tiempo</legend>
-                        <div class="row m-5"ng-repeat="nivel in ccc.listaNiveles">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Series para Nv{{nivel.numero}}</label>
-                                     <select class="form-control" 
-                                            ng-model="nivel.serie" 
-                                            ng-options="serie.valor as serie.descripcion for serie in ccc.listaSeries">
-                                        <option value="">Selecciona</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv{{nivel.numero}}</label>
-                                    <select class="form-control" 
-                                            ng-model="nivel.tiempo" 
-                                            ng-options="serie.valor as serie.descripcion for tiempo in ccc.listaTiempos">
-                                        <option value="">Selecciona</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well white">
-                    <fieldset>
-                        <legend><i class="md md-filter-3"></i> Recompensas</legend>
-                        <div class="row amber lighten-5 m-5">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Recompensa activa 1</option>
-                                        <option>Recompensa activa 2</option>
-                                        <option>Recompensa activa 3</option>
-                                        <option>Recompensa activa 4</option>
-                                        <option>Recompensa activa 5</option>
-                                    </select>
-                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>10 unidades</option>
-                                        <option>20 unidades</option>
-                                        <option>30 unidades</option>
-                                        <option>40 unidades</option>
-                                        <option>50 unidades</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row lime lighten-5 m-5">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Recompensa activa 1</option>
-                                        <option>Recompensa activa 2</option>
-                                        <option>Recompensa activa 3</option>
-                                        <option>Recompensa activa 4</option>
-                                        <option>Recompensa activa 5</option>
-                                    </select>
-                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>10 unidades</option>
-                                        <option>20 unidades</option>
-                                        <option>30 unidades</option>
-                                        <option>40 unidades</option>
-                                        <option>50 unidades</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row cyan lighten-5 m-5">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Recompensa activa 1</option>
-                                        <option>Recompensa activa 2</option>
-                                        <option>Recompensa activa 3</option>
-                                        <option>Recompensa activa 4</option>
-                                        <option>Recompensa activa 5</option>
-                                    </select>
-                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>10 unidades</option>
-                                        <option>20 unidades</option>
-                                        <option>30 unidades</option>
-                                        <option>40 unidades</option>
-                                        <option>50 unidades</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row purple lighten-5 m-5">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Recompensa activa 1</option>
-                                        <option>Recompensa activa 2</option>
-                                        <option>Recompensa activa 3</option>
-                                        <option>Recompensa activa 4</option>
-                                        <option>Recompensa activa 5</option>
-                                    </select>
-                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>10 unidades</option>
-                                        <option>20 unidades</option>
-                                        <option>30 unidades</option>
-                                        <option>40 unidades</option>
-                                        <option>50 unidades</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pink lighten-5 m-5">
-                            <div class="col-lg-9">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-stars"></i> Recompensa</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Recompensa activa 1</option>
-                                        <option>Recompensa activa 2</option>
-                                        <option>Recompensa activa 3</option>
-                                        <option>Recompensa activa 4</option>
-                                        <option>Recompensa activa 5</option>
-                                    </select>
-                                    <span class="help-block">Nombre del patrocinador de la recompensa (aparece al elegir recompensa)</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-sort"></i> Cantidad</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>10 unidades</option>
-                                        <option>20 unidades</option>
-                                        <option>30 unidades</option>
-                                        <option>40 unidades</option>
-                                        <option>50 unidades</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group pull-right">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
                             <button type="reset" class="btn btn-default">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" ng-click="ccc.guardarConcurso()">Guardar</button>
                         </div>
                     </fieldset>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well white">
+                    <h4><i class="md md-filter-2"></i> Series y tiempo</h4>
+                    <div class="table-responsive">
+                        <table class="table table-full table-full-small">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Nivel</th>
+                                    <th class="text-center">Series</th>
+                                    <th class="text-center">Tiempo</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="nivel in ccc.listaNiveles">
+                                    <td class="text-center">{{nivel.consecutivo}}</td>
+                                    <td class="text-center">
+                                        <select class="form-control" 
+                                                ng-model="nivel.serie" 
+                                                ng-options="serie.valor as serie.descripcion for serie in ccc.listaSeries">
+                                            <option value="">Selecciona</option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <select class="form-control" 
+                                                ng-model="nivel.tiempo" 
+                                                ng-options="serie.valor as serie.descripcion for tiempo in ccc.listaTiempos">
+                                            <option value="">Selecciona</option>
+                                        </select>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Agregar recompnesa"><i class="md md-add-circle-outline"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well white">
+                    <h4><i class="md md-filter-3"></i> Recompensas</h4>
+                    <div class="table-responsive">
+                        <table class="table table-full table-full-small">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Nivel</th>
+                                    <th class="text-center">Patrocinador</th>
+                                    <th class="text-center">Descripción</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="recompensa in ccc.listaRecompensas">
+                                    <td class="text-center">Nv{{recompensa.nivel}}</td>
+                                    <td class="text-center">{{recompensa.patrocinador}}</td>
+                                    <td class="text-center">{{recompensa.descripcion}}</td>
+                                    <td class="text-center">{{recompensa.cantidad}}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.editarRecompensa(recompensa)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="md md-edit"></i></button>
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.eliminarRecompensa(recompensa)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="md md-delete"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
                 </div>
             </div>
         </form>
