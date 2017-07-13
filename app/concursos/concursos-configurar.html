@@ -1,4 +1,4 @@
-<section class="forms-advanced">
+<section class="forms-advanced" ng-controller="ConcursosConfigurarControlador as ccc">
     <div class="page-header">
         <h1>
       <i class="md md-settings"></i>
@@ -18,30 +18,30 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="control-label">Mes</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>Enero</option>
-                                        <option>Febrero</option>
-                                        <option>Marzo</option>
-                                        <option>Abril</option>
-                                        <option>Mayo</option>
-                                        <option>Junio</option>
-                                        <option>Julio</option>
-                                        <option>Agosto</option>
-                                        <option>Septiembre</option>
-                                        <option>Octubre</option>
-                                        <option>Noviembre</option>
-                                        <option>Diciembre</option>
+                                    <select class="form-control" ng-model="ccc.mes">
+                                        <option value="">Elije</option>
+                                        <option value="01">Enero</option>
+                                        <option value="02">Febrero</option>
+                                        <option value="03">Marzo</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Mayo</option>
+                                        <option value="06">Junio</option>
+                                        <option value="07">Julio</option>
+                                        <option value="08">Agosto</option>
+                                        <option value="09">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label"><i class="md md-timer"></i> Año</label>
-                                    <select class="form-control">
-                                        <option>Elije</option>
-                                        <option>2017</option>
-                                        <option>2018</option>
+                                    <select class="form-control" 
+                                            ng-model="ccc.anio" 
+                                            ng-options="anio.valor as anio.descripcion for anio in ccc.listaAnios">
+                                        <option value="">Selecciona</option>
                                     </select>
                                 </div>
                             </div>
@@ -53,127 +53,24 @@
                 <div class="well white">
                     <fieldset>
                         <legend><i class="md md-filter-2"></i> Series y tiempo</legend>
-                        <div class="row amber lighten-5 m-5">
+                        <div class="row m-5"ng-repeat="nivel in ccc.listaNiveles">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Series para Nv1</label>
-                                    <select class="form-control">
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
+                                    <label class="control-label">Series para Nv{{nivel.numero}}</label>
+                                     <select class="form-control" 
+                                            ng-model="nivel.serie" 
+                                            ng-options="serie.valor as serie.descripcion for serie in ccc.listaSeries">
+                                        <option value="">Selecciona</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv1</label>
-                                    <select class="form-control">
-                                        <option>5 segundos</option>
-                                        <option>10 segundos</option>
-                                        <option>15 segundos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row lime lighten-5 m-5">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Series para Nv2</label>
-                                    <select class="form-control">
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv2</label>
-                                    <select class="form-control">
-                                        <option>5 segundos</option>
-                                        <option>10 segundos</option>
-                                        <option>15 segundos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row cyan lighten-5 m-5">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Series para Nv3</label>
-                                    <select class="form-control">
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv3</label>
-                                    <select class="form-control">
-                                        <option>5 segundos</option>
-                                        <option>10 segundos</option>
-                                        <option>15 segundos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row purple lighten-5 m-5">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Series para Nv4</label>
-                                    <select class="form-control">
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv4</label>
-                                    <select class="form-control">
-                                        <option>5 segundos</option>
-                                        <option>10 segundos</option>
-                                        <option>15 segundos</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pink lighten-5 m-5">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Series para Nv5</label>
-                                    <select class="form-control">
-                                        <option>10</option>
-                                        <option>11</option>
-                                        <option>12</option>
-                                        <option>13</option>
-                                        <option>14</option>
-                                        <option>15</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label"><i class="md md-timer"></i> para Nv5</label>
-                                    <select class="form-control">
-                                        <option>5 segundos</option>
-                                        <option>10 segundos</option>
-                                        <option>15 segundos</option>
+                                    <label class="control-label"><i class="md md-timer"></i> para Nv{{nivel.numero}}</label>
+                                    <select class="form-control" 
+                                            ng-model="nivel.tiempo" 
+                                            ng-options="serie.valor as serie.descripcion for tiempo in ccc.listaTiempos">
+                                        <option value="">Selecciona</option>
                                     </select>
                                 </div>
                             </div>

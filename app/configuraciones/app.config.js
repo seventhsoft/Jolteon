@@ -43,6 +43,10 @@ angular.module("kuni")
 .config(['$animateProvider', function($animateProvider) {
   $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/);
 }])
+.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('kuni');
+})
 // set constants
 .run(['$rootScope', function (){}]);
 

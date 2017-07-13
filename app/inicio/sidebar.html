@@ -18,19 +18,21 @@
   </div>
   <ul class="menu-links" ng-cloak>
     <a menu-link href="#/inicio/dashboard" icon="md md-dashboard">Incio</a>
-    <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel">
-      <a menu-link href="#/concursos/concursos-listado">Listado de concursos</a>
-      <a menu-link href="#/concursos/concursos-configurar">Agregar concurso</a>
-      <a menu-link href="#/concursos/concursos-detalle">Detalle de concurso</a>
+    <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel" ng-if="mc.banConcurso">
+        <a menu-link href="#/concursos/concursos-configurar">Agregar concurso</a>
+        <a menu-link href="#/concursos/concursos-listado">Listado de concursos</a>
+      <!-- <a menu-link href="#/concursos/concursos-detalle">Detalle de concurso</a> -->
     </li>
-    <li menu-toggle path="/patrocinadores" name="Patrocinadores" icon="md md-account-circle">
-      <a menu-link href="#/patrocinadores/patrocinadores-listado">Listado de patrocinadores</a>
-      <a menu-link href="#/patrocinadores/patrocinadores-agregar">Agregar patrocinador</a>
+    <li menu-toggle path="/patrocinadores" name="Patrocinadores" icon="md md-account-circle" ng-if="mc.banPatrocinador">
+        <a menu-link href="#/patrocinadores/patrocinadores-agregar">Agregar patrocinador</a>
+        <a menu-link href="#/patrocinadores/patrocinadores-listado">Listado de patrocinadores</a>
+      <!--
       <a menu-link href="#/patrocinadores/patrocinadores-detalle">Detalle de patrocinador</a>
       <a menu-link href="#/patrocinadores/patrocinadores-recompensas-listado">Listado de recompensas</a>
       <a menu-link href="#/patrocinadores/patrocinadores-recompensas-agregar">Agregar recompensa</a>
       <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-listado">Listado de pregunta-mensaje</a>
       <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-agregar">Agregar pregunta-mensaje</a>
+      -->
     </li>
     
   </ul>

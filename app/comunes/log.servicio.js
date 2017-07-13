@@ -13,18 +13,38 @@
         function info(texto,parametros){
             if(Log.INFO){
                 var mensaje = "info: ";
-                mensaje = mensaje + (texto !== undefined ? texto : "");
-                mensaje = mensaje + (parametros !== undefined ? JSON.stringify(parametros) : "");
-                $log.info(mensaje);  
+                if(texto !== undefined && parametros !== undefined){
+                    mensaje = mensaje + texto +(parametros !== undefined ? JSON.stringify(parametros) : "");
+                    $log.info(mensaje);
+                }else if(texto !== undefined && parametros === undefined){
+                    if(typeof texto === 'string' || typeof texto === 'number' || typeof texto === 'boolean'){
+                        mensaje = mensaje + (texto !== undefined ? texto : "");
+                        $log.info(mensaje);
+                    }else{
+                        $log.info(mensaje,texto);
+                    };
+                }else{
+                    $log.info(mensaje + texto);
+                };
             };
         };
         
-        function debug(texto,parametros){
+        function debug(texto,parametros){    
             if(Log.DEBUG){
                 var mensaje = "debug: ";
-                mensaje = mensaje + (texto !== undefined ? texto : "");
-                mensaje = mensaje + (parametros !== undefined ? JSON.stringify(parametros) : "");
-                $log.info(mensaje);
+                if(texto !== undefined && parametros !== undefined){
+                    mensaje = mensaje + texto +(parametros !== undefined ? JSON.stringify(parametros) : "");
+                    $log.info(mensaje);
+                }else if(texto !== undefined && parametros === undefined){
+                    if(typeof texto === 'string' || typeof texto === 'number' || typeof texto === 'boolean'){
+                        mensaje = mensaje + (texto !== undefined ? texto : "");
+                        $log.info(mensaje);
+                    }else{
+                        $log.info(mensaje,texto);
+                    };
+                }else{
+                    $log.info(mensaje + texto);
+                };
             };
         };
     };

@@ -1,6 +1,5 @@
 (function () {
     'use strict';
-    
     angular
         .module("kuni")
         .factory("SeguridadServicio", ComunesServicio);
@@ -13,7 +12,12 @@
         return servicio;
         
         function login(user,pass){
-            var usuario = {};
+            var usuario = {
+                idUsuario : 1,
+                user : user,
+                pass : pass,
+                sesion : true       
+            };
             return usuario;
         };
         

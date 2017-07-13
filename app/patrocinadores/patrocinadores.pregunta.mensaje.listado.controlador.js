@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module("kuni")
-        .factory("PatrocinadoresPreguntaMensajeListadoControlador", PatrocinadoresPreguntaMensajeListadoControlador);
+        .controller("PatrocinadoresPreguntaMensajeListadoControlador", PatrocinadoresPreguntaMensajeListadoControlador);
     PatrocinadoresPreguntaMensajeListadoControlador.$inject = ['PatrocinadoresServicio','ComunesServicio'];
     function PatrocinadoresPreguntaMensajeListadoControlador(Servicio,Comunes){
         var ppmlc = this;
