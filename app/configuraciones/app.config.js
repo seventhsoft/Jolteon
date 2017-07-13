@@ -47,6 +47,36 @@ angular.module("kuni")
   localStorageServiceProvider
     .setPrefix('kuni');
 })
+
+/* agregar autorización comun, es diferente a la del login 
+.config(['$httpProvider','Rutas', function($httpProvider,Rutas) {; 
+
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.interceptors.push(function ($q, $location,$cookies) {
+        return {
+                request: function (config) {//req
+                    return config;
+                },
+
+                response: function (result) {//res
+                    return result;
+                },
+
+                responseError: function (rejection) {
+                    if (rejection.status === 401) {
+                        $cookies.remove('session_key');
+                        $cookies.remove('userdata');
+                        window.location.href = Rutas.RUTAFR + "/index.html";
+                    }
+
+                    return $q.reject(rejection);
+                }
+            };
+        });
+    }
+])
+*/
+
 // set constants
 .run(['$rootScope', function (){}]);
 
