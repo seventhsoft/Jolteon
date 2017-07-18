@@ -79,14 +79,27 @@
                                         <p><strong>{{nivel.recompensa.cantidad}}</strong> {{nivel.recompensa.descripcion}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p>{{nivel.recompensa.patrocinador}}</p>
+                                        <p>{{nivel.recompensa.patrocinador.nombre}}</p>
                                     </td>
                                     <td class="text-center">
                                         <!-- cuando no hay ninguna recompensa -->
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Asignar"><i class="md md-add-box"></i></button>
+                                        <button type="button" 
+                                                class="btn btn-link btn-round" 
+                                                ng-click="ccc.agregarRecompensa(nivel)"
+                                                data-toggle="tooltip" 
+                                                data-placement="top" 
+                                                title="Asignar">
+                                            <i  ng-class="nivel.recompensa.agrego ? 'md md-edit' : 'md md-add-box' "></i>
+                                        </button>
                                         <!-- cuando hay recompensa -->
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.editarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="md md-edit"></i></button>
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.eliminarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="md md-delete"></i></button>
+                                        <button type="button" 
+                                                ng-if="nivel.recompensa.agrego"
+                                                class="btn btn-link btn-round" 
+                                                ng-click="ccc.eliminarRecompensa(nivel)" 
+                                                data-toggle="tooltip" data-placement="top" 
+                                                title="Eliminar">
+                                            <i class="md md-delete"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

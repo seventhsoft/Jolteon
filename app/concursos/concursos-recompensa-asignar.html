@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="ConcursosAsignarControlador as cac">
     <div class="page-header">
         <h1><i class="md md-visibility"></i> Recompensas activas</h1>
         <p class="lead">
@@ -12,16 +12,14 @@
                     <legend><i class="md md-filter-list"></i> Buscar</legend>
                     <div class="form-group">
                         <label class="control-label">Patrocinador</label>
-                        <select class="form-control">
+                        <select class="form-control" ng-model="cac.patrocinador" 
+                                ng-options="patrocinador as patrocinador.nombre for patrocinador in cac.listaPatrocinadores">
                             <option value="">Seleccionar</option>
-                            <option value="">Patrocinador 1</option>
-                            <option value="">Patrocinador 2</option>
-                            <option value="">Patrocinador 3</option>
                         </select>
                     </div>
                     <div class="form-group pull-right">
-                        <button type="reset" class="btn btn-default">Limpiar</button>
-                        <button type="submit" class="btn btn-info">Buscar</button>
+                        <button type="reset" class="btn btn-default" ng-click="cac.limpiar()">Limpiar</button>
+                        <button type="submit" class="btn btn-info"  ng-click="cac.buscar()">Buscar</button>
                     </div>
                 </fieldset>
             </div>
@@ -29,7 +27,7 @@
         <div class="col-md-8 col-lg-9">
             <div class="row no-m">
                 <div class="well white">
-                    <h3 class="table-title p-20">Recompensas del patrocinador NOMBRE DEL PATROCINADOR</h3>
+                    <h3 class="table-title p-20">Recompensas del patrocinador {{cac.patrocinador.nombre}}</h3>
                     <table class="table table-full table-full-small">
                         <thead>
                             <tr>
@@ -41,16 +39,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="form-group">
-                                <td class="text-center">Descripción(tipo) de recompensa</td>
-                                <td class="text-center">11/22/33</td>
-                                <td class="text-center">22</td>
+                            <tr class="form-group" ng-repeat="recompensa in cac.listaRecompensas">
+                                <td class="text-center">{{recompensa.descripcion}}</td>
+                                <td class="text-center">{{recompensa.vigencia | fechaCorta}}</td>
+                                <td class="text-center">{{recompensa.cantidad}}</td>
                                 <td class="text-center">
-                                    <input class="form-control" type="number" min="0" max="22"/>
+                                    <input class="form-control" ng-model="recompensa.nivel" type="number" min="0" max="{{recompensa.cantidad}}"/>
                                 </td>
                                 <td class="text-center">
                                     <button 
                                         type="button" 
+                                        ng-click="cac.asignarRecompensa(recompensa)"
                                         class="btn btn-primary btn-sm">Asignar</i>
                                     </button>
                                 </td>

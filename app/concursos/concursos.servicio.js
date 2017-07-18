@@ -7,7 +7,9 @@
     function ConcursosServicio($http,Rutas){
         var servicio = {
             origen : 0,
-            consurso : {}
+            consurso : {},
+            nivel : {},
+            listaNiveles : []
         };
         return servicio;
     };

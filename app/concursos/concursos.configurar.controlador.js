@@ -15,15 +15,11 @@
         ccc.concurso.mes = "";
         ccc.consecutivoNivel = 0;
         ccc.listaNiveles = [];
-        ccc.listaRecompensas = [];
-        ccc.listaSeries = [];
-        ccc.listaTiempos = [];
         ccc.obtenerListaAnios = obtenerListaAnios;
         ccc.cargaNuevo = cargaNuevo;
         ccc.cargaActualiza = cargaActualiza;
         ccc.cargaAgregarRecompensa = cargaAgregarRecompensa;
         ccc.agregarRecompensa = agregarRecompensa;
-        ccc.editarRecompensa = editarRecompensa;
         ccc.eliminarRecompensa = eliminarRecompensa;
         ccc.guardarConcurso = guardarConcurso;
         ccc.insertaConcurso = insertaConcurso;
@@ -38,23 +34,14 @@
         }else if(Servicio.origen === 2){
             ccc.cargaAgregarRecompensa();
         };
+        Servicio.origen = 0;
         
         function agregarRecompensa(nivel){
             log.info("Inicia agregar recompensa");
-            var recompensa = {
-                "idRecompensa" : nivel.consecutivo,
-                "idNivel" : nivel.idNivel,
-                "nivel" : nivel.consecutivo,
-                "patrocinador" : "Starbucks",
-                "descripcion" : "Bebidas venti cafe chiapas Bebidas venti cafe chiapas Bebidas venti cafe chiapas Bebidas venti cafe chiapas",
-                "cantidad" : 20
-            };
-            nivel.recompensa = recompensa;
-            ///location.href = "#/concursos/concursos-recompensa-asignar";
-        };
-        
-        function editarRecompensa(nivel){
-            log.info("Inicia editar recompensa");
+            /* tomamos una foto */
+            Servicio.concurso = ccc.concurso;
+            Servicio.listaNiveles = ccc.listaNiveles;
+            Servicio.nivel = nivel;
             location.href = "#/concursos/concursos-recompensa-asignar";
         };
         
@@ -97,28 +84,18 @@
                     ban = true;
                     break;
                 };
-            };
-            
-            for(var i=0; i < ccc.listaRecompensas.length; i++){
-                var banNiveles = true;
-                for(var j=0;i<ccc.listaNiveles.length;j++){
-                    if(ccc.listaNiveles[j].idNivel === ccc.listaRecompensas[i].idNivel){
-                        banNiveles = false;
-                        break;
-                    };
-                };
-                if(banNiveles){
+                if(ccc.listaNiveles[i].recompensa === {} 
+                    || ccc.listaNiveles[i].recompensa === undefined 
+                    || ccc.listaNiveles[i].recompensa === null){  
                     ban = true;
                     break;
                 };
             };
-            
             if(ban){
                 estado = EstadoConcurso.NO_CONFIGURADO;
             }else{
                 estado = EstadoConcurso.CONFIGURADO;
             };
-            
             return estado;
         };
         
@@ -143,7 +120,10 @@
                     "series" : 0,
                     "tiempo" : 0,
                     "nuevo" : true,
-                    "recompensa":{}
+                    "recompensa":{
+                        "nuevo" : true,
+                        "agrego" : false
+                    }
                 };
                 ccc.listaNiveles.push(nivel);
             };
@@ -156,6 +136,11 @@
         
         function cargaAgregarRecompensa(){
             log.info("Inicia carga agregar recompensa");
+            ccc.concurso = Servicio.concurso;
+            ccc.listaNiveles = Servicio.listaNiveles;
+            Servicio.origen = 0;
+            Servicio.concurso = {};
+            Servicio.listaNiveles = [];
         };
     };
 })();
