@@ -59,8 +59,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">Nivel</th>
-                                    <th class="text-center">Series para el nivel</th>
-                                    <th class="text-center">Tiempo para respuesta <small>(segundos)</small></th>
+                                    <th class="text-center">Series</th>
+                                    <th class="text-center">Tiempo de respuesta</th>
                                     <th class="text-center">Recompensa</th>
                                     <th class="text-center">Patrocinador</th>
                                     <th class="text-center">Acciones</th>
@@ -70,21 +70,23 @@
                                 <tr ng-repeat="nivel in ccc.listaNiveles" class="form-group">
                                     <td class="text-center">{{nivel.consecutivo}}</td>
                                     <td class="text-center">
-                                        <input class="form-control" type="number" ng-model="nivel.series" min="0" />
+                                        <input type="number" ng-model="nivel.series" min="0" />
                                     </td>
                                     <td class="text-center">
-                                        <input class="form-control" type="number" ng-model="nivel.tiempo" min="0" />
+                                        <input type="number" ng-model="nivel.tiempo" min="0" />
                                     </td>
                                     <td class="text-center">
-                                        <p><strong>1234</strong> Descripción de recompensa</p>
+                                        <p><strong>{{nivel.recompensa.cantidad}}</strong> {{nivel.recompensa.descripcion}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p>Nombre patrocinador</p>
+                                        <p>{{nivel.recompensa.patrocinador}}</p>
                                     </td>
                                     <td class="text-center">
-                                        <!--<button type="button" class="btn btn-primary btn-sm" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Agregar recompnesa">Agregar recompensa</button>-->
-                                        <button type="submit" class="btn btn-primary btn-sm" ng-click="clc.agregarConcurso()">Asignar recompensa</button><br/>
-                                        <button type="submit" class="btn btn-info btn-sm" ng-click="clc.agregarConcurso()">Editar recompensa</button>
+                                        <!-- cuando no hay ninguna recompensa -->
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Asignar"><i class="md md-add-box"></i></button>
+                                        <!-- cuando hay recompensa -->
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.editarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="md md-edit"></i></button>
+                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.eliminarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="md md-delete"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -92,43 +94,6 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="col-md-6">
-                <div class="well white">
-                    <h4><i class="md md-filter-3"></i> Recompensas</h4>
-                    <div class="table-responsive">
-                        <table class="table table-full table-full-small">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Nivel</th>
-                                    <th class="text-center">Patrocinador</th>
-                                    <th class="text-center">Descripción</th>
-                                    <th class="text-center">Cantidad</th>
-                                    <th class="text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="recompensa in ccc.listaRecompensas">
-                                    <td class="text-center">Nv{{recompensa.nivel}}</td>
-                                    <td class="text-center">{{recompensa.patrocinador}}</td>
-                                    <td class="text-center">{{recompensa.descripcion}}</td>
-                                    <td class="text-center">{{recompensa.cantidad}}</td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.editarRecompensa(recompensa)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="md md-edit"></i></button>
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.eliminarRecompensa(recompensa)" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="md md-delete"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                                                    <div class="row no-gutter">
-                                <div class="form-group pull-right">
-                                    <button type="submit" class="btn btn-primary" ng-click="clc.agregarConcurso()">Asignar recompensa</button>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            -->
         </form>
     </div>
 </section>

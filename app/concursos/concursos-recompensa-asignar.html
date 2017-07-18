@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group pull-right">
                         <button type="reset" class="btn btn-default">Limpiar</button>
-                        <button type="submit" class="btn btn-info">Filtrar</button>
+                        <button type="submit" class="btn btn-info">Buscar</button>
                     </div>
                 </fieldset>
             </div>
@@ -35,15 +35,19 @@
                             <tr>
                                 <th class="text-center">Descripción</th>
                                 <th class="text-center">Vigencia</th>
+                                <th class="text-center">Disponible</th>
                                 <th class="text-center">Cantidad</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
+                            <tr class="form-group">
                                 <td class="text-center">Descripción(tipo) de recompensa</td>
-                                <td class="text-center">Vence el 11/22/33</td>
-                                <td class="text-center">11/22</td>
+                                <td class="text-center">11/22/33</td>
+                                <td class="text-center">22</td>
+                                <td class="text-center">
+                                    <input class="form-control" type="number" min="0" max="22"/>
+                                </td>
                                 <td class="text-center">
                                     <button 
                                         type="button" 

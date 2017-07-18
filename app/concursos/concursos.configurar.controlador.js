@@ -46,28 +46,20 @@
                 "idNivel" : nivel.idNivel,
                 "nivel" : nivel.consecutivo,
                 "patrocinador" : "Starbucks",
-                "descripcion" : "cafe",
+                "descripcion" : "Bebidas venti cafe chiapas Bebidas venti cafe chiapas Bebidas venti cafe chiapas Bebidas venti cafe chiapas",
                 "cantidad" : 20
             };
-            ccc.listaRecompensas.push(recompensa);
-            log.debug("ccc.listaRecompensas: ",ccc.listaRecompensas);
+            nivel.recompensa = recompensa;
+            ///location.href = "#/concursos/concursos-recompensa-asignar";
         };
         
-        function editarRecompensa(recompensa){
+        function editarRecompensa(nivel){
             log.info("Inicia editar recompensa");
-            recompensa.cantidad -=10;
+            location.href = "#/concursos/concursos-recompensa-asignar";
         };
         
-        function eliminarRecompensa(recompensa){
-            log.info("Inicia eliminar recompensa");
-            var lista = [];
-            for(var i=0;i<ccc.listaRecompensas.length;i++){
-                if(recompensa.idRecompensa !== ccc.listaRecompensas[i].idRecompensa){
-                    lista.push(ccc.listaRecompensas[i]);
-                };
-            };
-            ccc.listaRecompensas = [];
-            ccc.listaRecompensas = lista;
+        function eliminarRecompensa(nivel){
+            nivel.recompensa = {};
         };
         
         function guardarConcurso(){
@@ -150,7 +142,8 @@
                     "consecutivo" : ccc.consecutivoNivel,
                     "series" : 0,
                     "tiempo" : 0,
-                    "nuevo" : true
+                    "nuevo" : true,
+                    "recompensa":{}
                 };
                 ccc.listaNiveles.push(nivel);
             };
