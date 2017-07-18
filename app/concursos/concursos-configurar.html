@@ -13,7 +13,6 @@
             <div class="col-md-12">
                 <div class="well white">
                     <h4><i class="md md-filter-1"></i> Fecha del concurso</h4>
-
                     <fieldset>
                         <div class="col-lg-6">
                             <div class="col-md-8">
@@ -39,9 +38,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label normal"><i class="md md-timer"></i> Año</label>
-                                    <select class="form-control" 
-                                            ng-model="ccc.concurso.anio" 
-                                            ng-options="anio.valor as anio.descripcion for anio in ccc.listaAnios">
+                                    <select class="form-control" ng-model="ccc.concurso.anio" ng-options="anio.valor as anio.descripcion for anio in ccc.listaAnios">
                                         <option value="">Selecciona</option>
                                     </select>
                                 </div>
@@ -54,16 +51,18 @@
                     </fieldset>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="well white">
-                    <h4><i class="md md-filter-2"></i> Series y tiempo</h4>
+                    <h4><i class="md md-filter-2"></i> Niveles</h4>
                     <div class="table-responsive">
                         <table class="table table-full table-full-small">
                             <thead>
                                 <tr>
                                     <th class="text-center">Nivel</th>
-                                    <th class="text-center">Series</th>
-                                    <th class="text-center">Tiempo</th>
+                                    <th class="text-center">Series para el nivel</th>
+                                    <th class="text-center">Tiempo para respuesta <small>(segundos)</small></th>
+                                    <th class="text-center">Recompensa</th>
+                                    <th class="text-center">Patrocinador</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -71,28 +70,29 @@
                                 <tr ng-repeat="nivel in ccc.listaNiveles" class="form-group">
                                     <td class="text-center">{{nivel.consecutivo}}</td>
                                     <td class="text-center">
-                                        <input class="form-control"
-                                               type="number"
-                                               ng-model="nivel.series"
-                                               min="0"
-                                        />
+                                        <input class="form-control" type="number" ng-model="nivel.series" min="0" />
                                     </td>
                                     <td class="text-center">
-                                        <input class="form-control"
-                                               type="number"
-                                               ng-model="nivel.tiempo"
-                                               min="0"
-                                        />
+                                        <input class="form-control" type="number" ng-model="nivel.tiempo" min="0" />
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-link btn-round" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Agregar recompnesa"><i class="md md-add-circle-outline"></i></button>
+                                        <p><strong>1234</strong> Descripción de recompensa</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p>Nombre patrocinador</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <!--<button type="button" class="btn btn-primary btn-sm" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Agregar recompnesa">Agregar recompensa</button>-->
+                                        <button type="submit" class="btn btn-primary btn-sm" ng-click="clc.agregarConcurso()">Asignar recompensa</button><br/>
+                                        <button type="submit" class="btn btn-info btn-sm" ng-click="clc.agregarConcurso()">Editar recompensa</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                    
+                    </div>
                 </div>
             </div>
+            <!--
             <div class="col-md-6">
                 <div class="well white">
                     <h4><i class="md md-filter-3"></i> Recompensas</h4>
@@ -120,9 +120,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>                    
+                                                    <div class="row no-gutter">
+                                <div class="form-group pull-right">
+                                    <button type="submit" class="btn btn-primary" ng-click="clc.agregarConcurso()">Asignar recompensa</button>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
+            -->
         </form>
     </div>
 </section>
