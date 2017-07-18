@@ -148,8 +148,8 @@
                 var nivel = {
                     "idNivel" : ccc.consecutivoNivel,
                     "consecutivo" : ccc.consecutivoNivel,
-                    "serie" : "",
-                    "tiempo" : "",
+                    "series" : 0,
+                    "tiempo" : 0,
                     "nuevo" : true
                 };
                 ccc.listaNiveles.push(nivel);

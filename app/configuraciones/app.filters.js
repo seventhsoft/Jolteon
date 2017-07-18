@@ -32,6 +32,17 @@
                 }
             };
         })
+        .filter('fechaLarga', function () {
+            return function (x) {
+                var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                if(x !== null){
+                    var date = new Date(x);
+                    return date.getUTCDate() + " de " + meses[date.getUTCMonth()] + " de " + date.getUTCFullYear();
+                }else{
+                    return "";
+                }
+            };
+        })
         .filter('startFrom', function() {
             return function(input, start) {
                 start = +start;

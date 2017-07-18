@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="ConcursosListadoControlador as clc">
     <div class="page-header">
         <h1><i class="md md-visibility"></i> Listado de concursos</h1>
         <p class="lead">
@@ -17,56 +17,36 @@
                                 <th class="text-center">Inicio</th>
                                 <th class="text-center">Término</th>
                                 <th class="text-center">Participantes</th>
-                                <th class="text-center">Premios asignados</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">Recompensas asignados</th>
+                                <th class="text-center">Estatus</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">KUNI201707</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">31/07/2017</td>
-                                <td class="text-center">12,308</td>
-                                <td class="text-center">280</td>
-                                <td class="text-center"><span class="label label-default">Finalizado</span></td>
+                            <tr ng-repeat="concurso in clc.listaConcursos">
+                                <td class="text-center">{{concurso.clave}}</td>
+                                <td class="text-center">{{concurso.fechaInicio}}</td>
+                                <td class="text-center">{{concurso.fechaFinal}}</td>
+                                <td class="text-center">{{concurso.totalParticipantes}}</td>
+                                <td class="text-center">{{concurso.totalRecompensas}}</td>
+                                <td class="text-center"><span class="label label-default">{{concurso.estatus}}</span></td>
                                 <td class="text-center">
-                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">KUNI201707</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">31/07/2017</td>
-                                <td class="text-center">12,308</td>
-                                <td class="text-center">280</td>
-                                <td class="text-center"><span class="label label-success">Activo</span></td>
-                                <td class="text-center">
-                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">KUNI201707</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">31/07/2017</td>
-                                <td class="text-center">12,308</td>
-                                <td class="text-center">280</td>
-                                <td class="text-center"><span class="label label-info">Programado</span></td>
-                                <td class="text-center">
-                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
-                                    <a href="#/concursos/concursos-configurar"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">KUNI201707</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">31/07/2017</td>
-                                <td class="text-center">12,308</td>
-                                <td class="text-center">280</td>
-                                <td class="text-center"><span class="label label-warning">Pendiente</span></td>
-                                <td class="text-center">
-                                    <a href="#/concursos/concursos-detalle"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button></a>
-                                    <a href="#/concursos/concursos-configurar"><button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button></a>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-link btn-round" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top"
+                                        ng-click="clc.verConcurso(concurso)"
+                                        title="Detalles"><i class="md md-visibility"></i>
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-link btn-round" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top"
+                                        ng-click="clc.editarConcurso(concurso)"
+                                        title="Editar"><i class="md md-mode-edit"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -77,7 +57,7 @@
                     </span>
                     <div class="row no-gutter">
                         <div class="form-group pull-right">
-                            <a href="#/concursos/concursos-configurar"><button type="submit" class="btn btn-primary">Agregar un concurso</button></a>
+                            <button type="submit" class="btn btn-primary" ng-click="clc.agregarConcurso()">Agregar un concurso</button>
                         </div>
                     </div>
                 </div>
@@ -89,43 +69,41 @@
                     <legend><i class="md md-filter-list"></i> Filtros</legend>
                     <div class="form-group">
                         <label class="control-label">Estatus</label>
-                        <select class="form-control">
-                            <option>Elije</option>
-                            <option>Finalizado</option>
-                            <option>Pendiente</option>
-                            <option>Programado</option>
-                            <option>Activo</option>
+                        <select class="form-control" 
+                                ng-model="clc.filtro.estatus" 
+                                ng-options="estatus.valor as estatus.descripcion for estatus in clc.listaEstatusConcurso">
+                            <option value="">Seleccionar</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Mes de realización</label>
-                        <select class="form-control">
-                            <option>Elije</option>
-                            <option>Enero</option>
-                            <option>Febrero</option>
-                            <option>Marzo</option>
-                            <option>Abril</option>
-                            <option>Mayo</option>
-                            <option>Junio</option>
-                            <option>Julio</option>
-                            <option>Agosto</option>
-                            <option>Septiembre</option>
-                            <option>Octubre</option>
-                            <option>Noviembre</option>
-                            <option>Diciembre</option>
+                        <select class="form-control" ng-model="clc.filtro.mes">
+                            <option value="">Seleccionar</option>
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Año de realización</label>
-                        <select class="form-control">
-                            <option>Elije</option>
-                            <option>2017</option>
-                            <option>2018</option>
+                        <select class="form-control" 
+                                ng-model="clc.filtro.anio" 
+                                ng-options="anio.valor as anio.descripcion for anio in clc.listaAnios">
+                            <option value="">Seleccionar</option>
                         </select>
                     </div>
                     <div class="form-group pull-right">
-                        <button type="submit" class="btn btn-info">Filtrar</button>
-                        <button type="reset" class="btn btn-default">Cancelar</button>
+                        <button type="reset" class="btn btn-default" ng-click="clc.limpiar()">Limpiar</button>
+                        <button type="submit" class="btn btn-info" ng-click="clc.filtrar()">Filtrar</button>
                     </div>
                 </fieldset>
             </div>

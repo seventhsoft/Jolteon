@@ -68,21 +68,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="nivel in ccc.listaNiveles">
+                                <tr ng-repeat="nivel in ccc.listaNiveles" class="form-group">
                                     <td class="text-center">{{nivel.consecutivo}}</td>
                                     <td class="text-center">
-                                        <select class="form-control" 
-                                                ng-model="nivel.serie" 
-                                                ng-options="serie.valor as serie.descripcion for serie in ccc.listaSeries">
-                                            <option value="">Selecciona</option>
-                                        </select>
+                                        <input class="form-control"
+                                               type="number"
+                                               ng-model="nivel.series"
+                                               min="0"
+                                        />
                                     </td>
                                     <td class="text-center">
-                                        <select class="form-control" 
-                                                ng-model="nivel.tiempo" 
-                                                ng-options="serie.valor as serie.descripcion for tiempo in ccc.listaTiempos">
-                                            <option value="">Selecciona</option>
-                                        </select>
+                                        <input class="form-control"
+                                               type="number"
+                                               ng-model="nivel.tiempo"
+                                               min="0"
+                                        />
                                     </td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-link btn-round" ng-click="ccc.agregarRecompensa(nivel)" data-toggle="tooltip" data-placement="top" title="Agregar recompnesa"><i class="md md-add-circle-outline"></i></button>
