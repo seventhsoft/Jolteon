@@ -1,0 +1,33 @@
+[
+    {
+        "idUsuario" : 1,
+        "username" : "admin",
+        "password" : "admin",
+        "nombre" : "Administrador ",
+        "aPaterno" : "del sietema KUNI",
+        "idPersona" : 1,
+        "idPerfil" : 1,
+        "activo" : true
+    },
+    {
+        "idUsuario" : 2,
+        "username" : "starbucks",
+        "password" : "starbucks",
+        "nombre" : "Starbucks Cafe",
+        "aPaterno" : "",
+        "idPersona" : 2,
+        "idPerfil" : 3,
+        "activo" : true
+    },
+    {
+        "idUsuario" : 3,
+        "username" : "juan.perez",
+        "password" : "juan.perez",
+        "nombre" : "Juan",
+        "aPaterno" : "Perez",
+        "idPersona" : 3,
+        "idPerfil" : 2,
+        "activo" : true
+    }
+    
+]

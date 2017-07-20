@@ -10,7 +10,7 @@
   </div>
   <div class="user-logged-in">
     <div class="content">
-      <div class="user-name">Andres</div>
+      <div class="user-name">{{mc.usuario.username}}</div>
       <div class="user-actions">
         30/06/2017
       </div>
@@ -21,8 +21,8 @@
     <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel" ng-if="mc.banConcurso">
         <a menu-link href="#/concursos/concursos-configurar">Agregar concurso</a>
         <a menu-link href="#/concursos/concursos-listado">Listado de concursos</a>
-        <a menu-link href="#/concursos/concursos-recompensa-asignar">Asignar recompensa</a>
         <!-- 
+            <a menu-link href="#/concursos/concursos-recompensa-asignar">Asignar recompensa</a>
             <a menu-link href="#/concursos/concursos-detalle">Detalle de concurso</a>
         -->
     </li>

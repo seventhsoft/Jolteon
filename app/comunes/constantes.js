@@ -11,6 +11,11 @@
         CONFIGURADO : 1,
         ACTIVO : 2,
         FINALIZADO : 3
+    }).constant('Perfiles',{
+        ADMINISTRADOR: 1,
+        JUGADOR : 2,
+        PATROCINADOR : 3,
+        ANUNCIANTE : 4
     });
 })();
 

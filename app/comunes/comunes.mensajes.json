@@ -5,5 +5,26 @@
         "titulo": "Aviso.",
         "mensaje": "Esta funcionalidad aun no esta implementada.",
         "duracion": 4000
+    },
+    {
+        "id":2,
+        "tipo":"error",
+        "titulo":"Aviso.",
+        "mensaje":"Credenciales inválidas.",
+        "duracion":5000
+    },
+    {
+        "id":3,
+        "tipo":"error",
+        "titulo":"Aviso.",
+        "mensaje":"Ocurrio un error inesperado.",
+        "duracion":5000
+    },
+    {
+        "id":4,
+        "tipo":"error",
+        "titulo":"Aviso.",
+        "mensaje":"No cuenta con el permiso necesario para ingresar.",
+        "duracion":5000
     }
 ]

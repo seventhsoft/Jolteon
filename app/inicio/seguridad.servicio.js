@@ -11,14 +11,9 @@
         };
         return servicio;
         
-        function login(user,pass){
-            var usuario = {
-                idUsuario : 1,
-                user : user,
-                pass : pass,
-                sesion : true       
-            };
-            return usuario;
+        function login(username,password){
+            var ruta = Rutas.RUTAFR + "/app/configuraciones/users.json";
+            return $http.get(ruta);
         };
         
         function logout(){
