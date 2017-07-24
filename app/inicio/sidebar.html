@@ -1,42 +1,42 @@
 <aside class="sidebar fixed">
-  <div class="brand-logo">
-    <div id="logo">
-      <!--<div class="foot1"></div>
+    <div class="brand-logo">
+        <div id="logo">
+            <!--<div class="foot1"></div>
       <div class="foot2"></div>
       <div class="foot3"></div>
       <div class="foot4"></div>-->
-      <img src="assets/img/kuni-logo.png" class="img-responsive">
+            <img src="assets/img/kuni-logo.png" class="img-responsive">
+        </div>
     </div>
-  </div>
-  <div class="user-logged-in">
-    <div class="content">
-      <div class="user-name">{{mc.usuario.username}}</div>
-      <div class="user-actions">
-        30/06/2017
-      </div>
+    <div class="user-logged-in">
+        <div class="content">
+            <div class="user-name">{{mc.usuario.username}}</div>
+            <div class="user-actions">
+                30/06/2017
+            </div>
+        </div>
     </div>
-  </div>
-  <ul class="menu-links" ng-cloak>
-    <a menu-link href="#/inicio/dashboard" icon="md md-dashboard">Incio</a>
-    <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel" ng-if="mc.banConcurso">
-        <a menu-link href="#/concursos/concursos-configurar">Agregar concurso</a>
-        <a menu-link href="#/concursos/concursos-listado">Listado de concursos</a>
-        <!-- 
+    <ul class="menu-links" ng-cloak>
+        <a menu-link href="#/inicio/dashboard" icon="md md-dashboard">Incio</a>
+        <li menu-toggle path="/concursos" name="Concursos" icon="md md-view-carousel" ng-if="mc.banConcurso">
+            <a menu-link href="#/concursos/concursos-configurar">Agregar concurso</a>
+            <a menu-link href="#/concursos/concursos-listado">Listado de concursos</a>
+            <!-- 
             <a menu-link href="#/concursos/concursos-recompensa-asignar">Asignar recompensa</a>
             <a menu-link href="#/concursos/concursos-detalle">Detalle de concurso</a>
         -->
-    </li>
-    <li menu-toggle path="/patrocinadores" name="Patrocinadores" icon="md md-account-circle" ng-if="mc.banPatrocinador">
-        <a menu-link href="#/patrocinadores/patrocinadores-agregar">Agregar patrocinador</a>
-        <a menu-link href="#/patrocinadores/patrocinadores-listado">Listado de patrocinadores</a>
-      <!--
-      <a menu-link href="#/patrocinadores/patrocinadores-detalle">Detalle de patrocinador</a>
-      <a menu-link href="#/patrocinadores/patrocinadores-recompensas-listado">Listado de recompensas</a>
-      <a menu-link href="#/patrocinadores/patrocinadores-recompensas-agregar">Agregar recompensa</a>
-      <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-listado">Listado de pregunta-mensaje</a>
-      <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-agregar">Agregar pregunta-mensaje</a>
-      -->
-    </li>
-    
-  </ul>
+        </li>
+        <li menu-toggle path="/patrocinadores" name="Patrocinadores" icon="md md-account-circle" ng-if="mc.banPatrocinador">
+            <a menu-link href="#/patrocinadores/patrocinadores-agregar">Agregar patrocinador</a>
+            <a menu-link href="#/patrocinadores/patrocinadores-listado">Listado de patrocinadores</a>
+            <a menu-link href="#/patrocinadores/patrocinadores-detalle">Detalle de patrocinador</a>
+            <a menu-link href="#/patrocinadores/patrocinadores-recompensas-agregar">Agregar recompensa</a>
+            <a menu-link href="#/patrocinadores/patrocinadores-recompensas-detalle">Detalle de recompensas</a>
+            <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-agregar">Agregar pregunta-mensaje</a>
+            
+            <!--
+            <a menu-link href="#/patrocinadores/patrocinadores-pregunta-mensaje-listado">Listado de pregunta-mensaje</a>
+            -->
+        </li>
+    </ul>
 </aside>

@@ -1,1 +1,60 @@
-Agregar recompensa
+<section class="forms-advanced">
+    <div class="page-header">
+        <h1> 
+            <i class="md md-my-library-add"></i> 
+            Agregar recompensa 
+        </h1>
+        <p class="lead">
+            En esta sección podrás agregar y/o editar una recompensa.
+        </p>
+    </div>
+    <div class="row m-b-20">
+        <div class="col-md-8">
+            <div class="well white">
+                <form class="form-floating ng-pristine ng-valid">
+                    <fieldset>
+                        <legend>Datos del patrocinador</legend>
+                        <div class="form-group">
+                            <label for="" class="control-label">Descripción</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Cantidad</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Código</label>
+                                    <input type="phone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="md md-event-available"></i></span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="Válido desde" bs-datepicker>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="hasta" bs-datepicker>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <a href="">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </a>
+                            <button type="reset" class="btn btn-default">Cancelar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

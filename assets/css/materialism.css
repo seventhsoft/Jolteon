@@ -12938,7 +12938,7 @@ aside.sidebar .user-logged-in:after {
 }
 
 .card .card-action {
-    padding: 20px;
+    padding: 5px 20px;
 }
 
 .card.bordered .card-action {
@@ -13025,8 +13025,8 @@ aside.sidebar .user-logged-in:after {
 legend {
     margin-bottom: 0px;
     font-size: 16px;
-    font-weight: 400;
-    padding-bottom: 25px;
+    font-weight: 600;
+    padding-bottom: 15px;
 }
 
 .floating-label .control-label.normal,
