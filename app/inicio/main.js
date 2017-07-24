@@ -27,6 +27,7 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
         .then(
             function(response){
                 log.debug("response",response.data);
+                /*
                 var listaUsuarios =[];
                listaUsuarios = response.data;
                var ban = true;
@@ -41,10 +42,12 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
                        };
                        
                    };
+                   
                };
                if(ban){
                    ComunesServicio.mensajes(2);
                };
+               */
             },function(){
                 ComunesServicio.mensajes(3);
             }
