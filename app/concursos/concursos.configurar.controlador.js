@@ -25,7 +25,15 @@
         ccc.insertaConcurso = insertaConcurso;
         ccc.actualizaConcurso = actualizaConcurso;
         ccc.validaConcurso = validaConcurso;
-        
+        Servicio.obtenerPerfiles()
+        .then(
+            function(response){
+                log.debug("perfiles",response.data);
+            },
+            function(){
+                log.debug("fallo");
+            }
+        );
         ccc.obtenerListaAnios();
         if(Servicio.origen === 0){
             ccc.cargaNuevo();

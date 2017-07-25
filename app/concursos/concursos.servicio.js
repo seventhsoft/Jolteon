@@ -3,14 +3,21 @@
     angular
         .module("kuni")
         .factory("ConcursosServicio", ConcursosServicio);
-    ConcursosServicio.$inject = ['$http','Rutas'];
-    function ConcursosServicio($http,Rutas){
+    ConcursosServicio.$inject = ['$http','Rutas','log'];
+    function ConcursosServicio($http,Rutas,log){
         var servicio = {
             origen : 0,
             consurso : {},
             nivel : {},
-            listaNiveles : []
+            listaNiveles : [],
+            obtenerPerfiles : obtenerPerfiles
         };
         return servicio;
+        
+        function obtenerPerfiles(){
+            log.debug("Inicia perfiles");
+            var ruta = Rutas.RUTABK + "/catalogos/perfiles";
+            return $http.get(ruta);
+        };
     };
 })();

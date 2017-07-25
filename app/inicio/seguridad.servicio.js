@@ -3,39 +3,50 @@
     angular
         .module("kuni")
         .factory("SeguridadServicio", ComunesServicio);
-    ComunesServicio.$inject = ['$http','Rutas'];
-    function ComunesServicio($http,Rutas){
+    ComunesServicio.$inject = ['$http','Rutas','log','Llaves'];
+    function ComunesServicio($http,Rutas,log,Llaves){
         var servicio = {
             login : login,
-            logout : logout
+            logout : logout,
+            obtenerListaUsuarios : obtenerListaUsuarios
         };
         return servicio;
         
         function login(username,password){
-            var ruta = "api.juegakuni.com.mx/lfs/oauth/token";
-            //return $http.get(ruta);
+            log.debug("Inicia el login");
+            var ruta = Rutas.RUTABK +"/oauth/token";
+            var parmetros = {
+                username:username,
+                password: password,
+                client_id : "webClient",
+                grant_type : "password"
+            };
             return $http(
-                    {
-                        url : "api.juegakuni.com.mx/lfs/oauth/token",
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization':'Basic d2ViQ2xpZW50OnNlY3JldA=='
-                        },
-                        transformRequest: function(obj) {
-                            var str = [];
-                            for(var p in obj)
-                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                            return str.join("&");
-                        },
-                        data : {username:username, password: password}
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': Llaves.BASIC
+                    },
+                    url : ruta,
+                    method: "POST",
+                    data : parmetros,
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for(var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
                     }
-                );
+                }
+            );
         };
         
         function logout(){
             return false;
         };
-    }
-
+        
+        function obtenerListaUsuarios(){
+            var ruta = Rutas.RUTABK + "/usuarios";
+            return $http.get(ruta);
+        };
+    };
 })();
