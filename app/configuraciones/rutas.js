@@ -5,7 +5,7 @@
     .constant('Rutas',{
         /* DEV */
         RUTABK : 'http://api.juegakuni.com.mx/lfs',
-        RUTAFR : 'http://localhost:8383/KUNI-FRONT'
+        RUTAFR : 'http://localhost:8383/LSF-FRONT'
         /* DEV */
         /* PRODUCCION *
         RUTABK : 'http://api.juegakuni.com.mx/lfs',

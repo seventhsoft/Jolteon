@@ -3,8 +3,8 @@
     angular
         .module("kuni")
         .factory("SeguridadServicio", ComunesServicio);
-    ComunesServicio.$inject = ['$http','Rutas','log','Llaves'];
-    function ComunesServicio($http,Rutas,log,Llaves){
+    ComunesServicio.$inject = ['$http','Rutas','log','Llaves','localStorageService'];
+    function ComunesServicio($http,Rutas,log,Llaves,localStorageService){
         var servicio = {
             login : login,
             logout : logout,
@@ -41,7 +41,14 @@
         };
         
         function logout(){
-            return false;
+            var token = localStorageService.get("token");
+            var access = Rutas.RUTABK + '/oauth/token/revokeById/' + token.access_token;
+            var refresh = Rutas.RUTABK + '/tokens/revokeRefreshToken/' + token.refresh_token;
+            $http.post(refresh);
+            $http.post(access);
+            localStorageService.remove("usuario");
+            localStorageService.remove("token");
+            location.reload();
         };
         
         function obtenerListaUsuarios(){

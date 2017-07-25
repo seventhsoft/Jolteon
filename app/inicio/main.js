@@ -16,6 +16,7 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
     mc.cerrarSesion = cerrarSesion;
     mc.obtenerUsuario = obtenerUsuario;
     mc.verificaPermisos = verificaPermisos;
+    mc.cargarCatalogos = cargarCatalogos;
     
     if(mc.usuario !== null && mc.token !== null ){
         log.debug("usuario: ",mc.usuario);
@@ -42,16 +43,19 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
                 return SeguridadServicio.obtenerListaUsuarios();
             },
             function(response){
-                if(response.status === 500){
-                    ComunesServicio.mensajes(2);
+                log.debug("fallo:",response);
+                if(response.status === 500 || response.status === 400){
+                    return ComunesServicio.mensajes(2);
                 }else{
-                    ComunesServicio.mensajes(3);
+                    return ComunesServicio.mensajes(3);
                 };
             }
         ).then(
             function(response){
-                mc.listaUsuarios = response.data;
-                mc.obtenerUsuario();
+                if(response !== undefined){
+                    mc.listaUsuarios = response.data;
+                    mc.obtenerUsuario();
+                };
             },
             function(){
                 ComunesServicio.mensajes(3);
@@ -66,19 +70,14 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
             if(mc.listaUsuarios[i].usuario === mc.username){
                 mc.usuario = mc.listaUsuarios[i];
                 localStorageService.set("usuario",mc.usuario);
-                mc.verificaPermisos();
+                mc.cargarCatalogos();
                 break;
             };
         };
     };
     
     function cerrarSesion(){
-        localStorageService.remove("usuario");
-        localStorageService.remove("token");
-        mc.usuario = null;
-        mc.sesion = false;
-        mc.username = "";
-        mc.password = "";
+        SeguridadServicio.logout();
     };
     
     function verificaPermisos(){
@@ -107,4 +106,26 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
         };
     };
     
+    function cargarCatalogos(){
+        ComunesServicio.obtenerListaEsCon()
+        .then(
+            function(response){
+                ComunesServicio.listaEstadosConcurso = response.data;
+                return ComunesServicio.obtenerPerfiles();
+            },
+            function(){
+                log.info("Ocurrio un error al obtener la lista de estados de concurso");
+                ComunesServicio.mensajes(3);
+            }
+        ).then(
+            function(response){
+                ComunesServicio.listaPerfiles = response.data;
+                mc.verificaPermisos();
+            },
+            function(){
+                log.info("Ocurrio un error al obtener la lista de perfiles");
+                ComunesServicio.mensajes(3);
+            }
+        );
+    };
 };

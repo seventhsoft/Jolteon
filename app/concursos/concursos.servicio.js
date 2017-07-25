@@ -9,8 +9,16 @@
             origen : 0,
             consurso : {},
             nivel : {},
-            listaNiveles : []
+            listaNiveles : [],
+            listaTiposRecompensa : [],
+            obtenerListaTipoReconpensa : obtenerListaTipoReconpensa
         };
         return servicio;
+        
+        function obtenerListaTipoReconpensa(){
+            var ruta = Rutas.RUTABK + "/catalogos/tiposrecompensa";
+            return $http.get(ruta);
+        };
+        
     };
 })();

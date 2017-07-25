@@ -8,7 +8,12 @@
     function ComunesServicio($http,Rutas){
         var servicio = {
             mensajes : mensajes,
-            bitacora : bitacora
+            bitacora : bitacora,
+            listaEstadosConcurso : [],
+            listaPerfiles : [],
+            obtenerListaEsCon : obtenerListaEsCon,
+            obtenerPerfiles : obtenerPerfiles
+            
         };
         return servicio;
         function mensajes(id){
@@ -43,6 +48,16 @@
                     };
                 }
             );  
+        };
+        
+        function obtenerListaEsCon(){
+            var ruta = Rutas.RUTABK + '/catalogos/estadosConcurso';  
+            return $http.get(ruta);
+        };
+        
+        function obtenerPerfiles(){
+            var ruta = Rutas.RUTABK + '/catalogos/perfiles';  
+            return $http.get(ruta);
         };
     };
 })();
