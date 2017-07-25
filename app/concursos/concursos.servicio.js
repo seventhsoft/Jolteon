@@ -9,15 +9,8 @@
             origen : 0,
             consurso : {},
             nivel : {},
-            listaNiveles : [],
-            obtenerPerfiles : obtenerPerfiles
+            listaNiveles : []
         };
         return servicio;
-        
-        function obtenerPerfiles(){
-            log.debug("Inicia perfiles");
-            var ruta = Rutas.RUTABK + "/catalogos/perfiles";
-            return $http.get(ruta);
-        };
     };
 })();
