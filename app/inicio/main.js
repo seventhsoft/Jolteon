@@ -11,10 +11,9 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
     mc.token = localStorageService.get("token");
     mc.banConcurso = false;
     mc.banPatrocinador = false;
+    mc.fechaSistema = new Date();
     mc.iniciarSesion = iniciarSesion;
-    mc.listaUsuarios = [];
     mc.cerrarSesion = cerrarSesion;
-    mc.obtenerUsuario = obtenerUsuario;
     mc.verificaPermisos = verificaPermisos;
     mc.cargarCatalogos = cargarCatalogos;
     
@@ -40,7 +39,7 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
                 /* Agregamos una autorización global */
                 localStorageService.set("token",mc.token);
                 $http.defaults.headers.common['Authorization'] = mc.token.token_type + " " + mc.token.access_token;
-                return SeguridadServicio.obtenerListaUsuarios();
+                return SeguridadServicio.obtenerUsuario(mc.token.idUsuario);
             },
             function(response){
                 log.debug("fallo:",response);
@@ -52,28 +51,15 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
             }
         ).then(
             function(response){
-                if(response !== undefined){
-                    mc.listaUsuarios = response.data;
-                    mc.obtenerUsuario();
-                };
+                mc.usuario =response.data;
+                localStorageService.set("usuario",mc.usuario);
+                mc.cargarCatalogos();
             },
             function(){
                 ComunesServicio.mensajes(3);
             }
         );
         
-    };
-    
-    function obtenerUsuario(){
-        log.debug("Inicia Obtener usuario");
-        for(var i=0; i<mc.listaUsuarios.length;i++){
-            if(mc.listaUsuarios[i].usuario === mc.username){
-                mc.usuario = mc.listaUsuarios[i];
-                localStorageService.set("usuario",mc.usuario);
-                mc.cargarCatalogos();
-                break;
-            };
-        };
     };
     
     function cerrarSesion(){

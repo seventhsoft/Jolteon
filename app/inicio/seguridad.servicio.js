@@ -2,13 +2,14 @@
     'use strict';
     angular
         .module("kuni")
-        .factory("SeguridadServicio", ComunesServicio);
-    ComunesServicio.$inject = ['$http','Rutas','log','Llaves','localStorageService'];
-    function ComunesServicio($http,Rutas,log,Llaves,localStorageService){
+        .factory("SeguridadServicio", SeguridadServicio);
+    SeguridadServicio.$inject = ['$http','Rutas','log','Llaves','localStorageService'];
+    function SeguridadServicio($http,Rutas,log,Llaves,localStorageService){
         var servicio = {
             login : login,
             logout : logout,
-            obtenerListaUsuarios : obtenerListaUsuarios
+            obtenerListaUsuarios : obtenerListaUsuarios,
+            obtenerUsuario : obtenerUsuario
         };
         return servicio;
         
@@ -53,6 +54,11 @@
         
         function obtenerListaUsuarios(){
             var ruta = Rutas.RUTABK + "/usuarios";
+            return $http.get(ruta);
+        };
+        
+        function obtenerUsuario(idUsuario){
+            var ruta = Rutas.RUTABK + "/usuarios/"+idUsuario;
             return $http.get(ruta);
         };
     };
