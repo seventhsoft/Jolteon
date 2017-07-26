@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" ng-controller="DashboarAdministradortrolador as dbc">
     <div class="row no-gutter">
         <div class="col-sm-12 col-md-12 col-lg-9">
             <div class="p-20 clearfix">
@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="card-header relative">
                                 <div class="card-title">Concurso activo</div>
-                                <div class="small grey-text">Clave de concurso KUNI201707</div>
+                                <div class="small grey-text">Clave de concurso {{dbc.concursoActivo.clave}}</div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-small grey-text">
@@ -21,19 +21,18 @@
                                     <tbody>
                                         <tr>
                                             <td>Fecha de inicio</td>
-                                            <td>01/01/2017</td>
+                                            <td>{{dbc.concursoActivo.fechaInicio}}</td>
                                         </tr>
                                         <tr>
                                             <td>Fecha de término</td>
-                                            <td>31/01/2017</td>
+                                            <td>{{dbc.concursoActivo.fechaFin}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Premios asignados</td>
-                                            <td>Lv1: 18/50
-                                                <br/>Lv2: 14/40
-                                                <br/>Lv3: 18/30
-                                                <br/>Lv4: 06/20
-                                                <br/>Lv5: 1/10
+                                            <td>Recompensas</td>
+                                            <td>
+                                                <label ng-repeat="recompensa in dbc.concursoActivo.recompensas">
+                                                    Nvl {{recompensa.idTipoRecompensa}}: {{recompensa.remitidos}}/{{recompensa.cantidad}}
+                                                </label>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -41,7 +40,7 @@
                             </div>
                             <div class="card-action clearfix">
                                 <div class="pull-right">
-                                    <a href="#/concursos/concursos-detalle"><button class="btn btn-info">Detalles</button></a>
+                                    <button class="btn btn-info" ng-click="dbc.detalleConcurso(dbc.concursoActivo)">Detalles</button>
                                 </div>
                             </div>
                         </div>
@@ -53,16 +52,16 @@
                             </div>
                             <div class="card-content">
                                 <address>
-                                    <strong>Concurso KUNI201708</strong>
-                                    <br> 14 días para activarse
-                                    <br> Inicia el 1 de julio de 2017
-                                    <br> Finaliza el 31 de julio de 2017
-                                    <br> <span class="label label-success">Programado</span>
+                                    <strong>Concurso {{dbc.concursoProximo.clave}}</strong>
+                                    <br> {{dbc.concursoProximo.dias}} días para activarse
+                                    <br> Inicia el {{dbc.concursoProximo.fechaInicio}}
+                                    <br> Finaliza el {{dbc.concursoProximo.fechaFin}}
+                                    <br> <span ng-class="dbc.concursoProximo.color">{{dbc.concursoProximo.estado}}</span>
                                 </address>
                             </div>
                             <div class="card-action clearfix">
                                 <div class="pull-right">
-                                    <a href="#/concursos/concursos-configurar"><button class="btn btn-primary">Configurar</button></a>
+                                    <button class="btn btn-primary" ng-click="dbc.configurarConcurso(concurso)">Configurar</button>
                                 </div>
                             </div>
                         </div>
@@ -88,69 +87,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">KUNI201707</td>
-                                            <td class="text-center">01/07/2017</td>
-                                            <td class="text-center">31/07/2017</td>
-                                            <td class="text-center">12,308</td>
-                                            <td class="text-center">280</td>
-                                            <td class="text-center"><span class="label label-default">Finalizado</span></td>
+                                        <tr ng-repeat="concurso in dbc.listaConcursos">
+                                            <td class="text-center">{{concurso.clave}}</td>
+                                            <td class="text-center">{{concurso.fechaInicio}}</td>
+                                            <td class="text-center">{{concurso.fechaFin}}</td>
+                                            <td class="text-center">{{concurso.cantidadParticipantes}}</td>
+                                            <td class="text-center">{{concurso.cantidadRecompensas}}</td>
+                                            <td class="text-center"><span ng-class="concurso.color">{{concurso.estado}}</span></td>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">KUNI201707</td>
-                                            <td class="text-center">01/07/2017</td>
-                                            <td class="text-center">31/07/2017</td>
-                                            <td class="text-center">12,308</td>
-                                            <td class="text-center">280</td>
-                                            <td class="text-center"><span class="label label-success">Pendiente</span></td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">KUNI201707</td>
-                                            <td class="text-center">01/07/2017</td>
-                                            <td class="text-center">31/07/2017</td>
-                                            <td class="text-center">12,308</td>
-                                            <td class="text-center">280</td>
-                                            <td class="text-center"><span class="label label-info">Programado</span></td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">KUNI201707</td>
-                                            <td class="text-center">01/07/2017</td>
-                                            <td class="text-center">31/07/2017</td>
-                                            <td class="text-center">12,308</td>
-                                            <td class="text-center">280</td>
-                                            <td class="text-center"><span class="label label-warning">Pendiente</span></td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-mode-edit"></i></button>
+                                                <button type="button" 
+                                                        class="btn btn-link btn-round" 
+                                                        ng-click="dbc.detalleConcurso(concurso)"
+                                                        title="Detalles">
+                                                    <i class="md md-visibility"></i>
+                                                </button>
+                                                <button type="button" 
+                                                        class="btn btn-link btn-round" 
+                                                        ng-click="dbc.detalleConcurso(concurso)"
+                                                        title="Configurar">
+                                                    <i class="md md-mode-edit"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="card-action clearfix">
-                                <div class="row">
-                                    <div class="col-lg-10 col-lg-offset-2 col-md-8 col-md-offset-4 col-sm-7 col-sm-offset-5 col-xs-12 text-right">
-                                        <ul class="pagination">
-                                            <li class="disabled"><a href="">«</a></li>
-                                            <li class="active"><a href="">1</a></li>
-                                            <li><a href="">2</a></li>
-                                            <li><a href="">3</a></li>
-                                            <li><a href="">4</a></li>
-                                            <li class="hidden-xs"><a href="">5</a></li>
-                                            <li><a href="">»</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -170,30 +130,15 @@
                     <div class="tab-content m-t-10">
                         <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==1}">
                             <ul class="timeline">
-                                <li>
+                                <li ng-repeat="participante in dbc.listaPatrocinadores">
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title">Patrocinador 1</h4>
+                                            <h4 class="timeline-title">{{participante.organizacion}}</h4>
                                         </div>
                                         <div class="timeline-body">
                                             <span>
                                             <ul>
-                                                <li>Patrocino económico</li>
-                                                <li>2 preguntas mensaje</li>
-                                            </ul>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Patrocinador 2</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <span>
-                                            <ul>
-                                                <li>Patrocino económico</li>
+                                                <li>{{participante.preguntas}} preguntas mensaje</li>
                                             </ul>
                                             </span>
                                         </div>
@@ -203,46 +148,16 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==2}">
                             <ul class="timeline">
-                                <li>
+                                <li ng-repeat="anunciante in dbc.listaAnunciantes">
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
-                                            <h4 class="timeline-title">Anunciante 1</h4>
+                                            <h4 class="timeline-title">{{anunciante.organizacion}}</h4>
                                         </div>
                                         <div class="timeline-body">
                                             <span>
                                                 <ul>
-                                                    <li>2 campañas</li>
-                                                    <li>6 banners activos</li>
-                                                </ul>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Anunciante 2</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <span>
-                                                <ul>
-                                                    <li>1 campaña</li>
-                                                    <li>3 banners activos</li>
-                                                </ul>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Anunciante 3</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <span>
-                                                <ul>
-                                                    <li>1 campañas</li>
-                                                    <li>12 banners activos</li>
+                                                    <li>{{anunciante.campanas}} campañas</li>
+                                                    <li>{{anunciante.banners}} banners activos</li>
                                                 </ul>
                                             </span>
                                         </div>
