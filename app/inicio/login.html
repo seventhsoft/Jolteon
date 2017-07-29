@@ -16,7 +16,7 @@
             <form class="form-floating">
                 <div class="form-group">
                     <label for="inputEmail" class="control-label">Usuario</label>
-                    <input type="text" class="form-control" ng-model="mc.username">
+                    <input type="text" class="form-control" ng-model="mc.username" maxlength="20">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="control-label">Contraseña</label>
@@ -26,6 +26,7 @@
         </div>
         <div class="card-action clearfix">
             <div class="pull-right m-v-20">
+                <button type="submit" class="btn btn-info" ng-click="mc.recuperarPassword()">Olvide mi contraseña</button>
                 <button type="submit" class="btn btn-primary" ng-click="mc.iniciarSesion()">Iniciar Sesión</button>
             </div>
         </div>

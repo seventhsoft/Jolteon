@@ -16,12 +16,40 @@ function MainController(ComunesServicio,log,SeguridadServicio,localStorageServic
     mc.cerrarSesion = cerrarSesion;
     mc.verificaPermisos = verificaPermisos;
     mc.cargarCatalogos = cargarCatalogos;
+    mc.recuperarPassword = recuperarPassword;
     
     if(mc.usuario !== null && mc.token !== null ){
         log.debug("usuario: ",mc.usuario);
         /* Agregamos una autorización global */
         $http.defaults.headers.common['Authorization'] = mc.token.token_type + " " + mc.token.access_token;
         mc.verificaPermisos();
+    };
+    
+    function recuperarPassword(){
+        if(mc.username === null || mc.username === "" || mc.username === undefined ){
+            return ComunesServicio.mensajes(5);
+        };
+        
+        SeguridadServicio.recuperarPassword(mc.username)
+        .then(
+                function(response){
+                    log.debug("exito:");
+                    log.debug(response);
+                    if(response.status === 200){
+                        log.debug(1);
+                        return ComunesServicio.mensajes(6);
+                    }else{
+                        log.debug(2);
+                        return ComunesServicio.mensajes(7);
+                    };
+                    log.debug(3);
+                },
+                function(response){
+                    log.debug("fallo:");
+                    log.debug(response);
+                    return ComunesServicio.mensajes(7);
+                }
+            );
     };
     
     function iniciarSesion(){

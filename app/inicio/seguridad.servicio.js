@@ -9,7 +9,8 @@
             login : login,
             logout : logout,
             obtenerListaUsuarios : obtenerListaUsuarios,
-            obtenerUsuario : obtenerUsuario
+            obtenerUsuario : obtenerUsuario,
+            recuperarPassword : recuperarPassword
         };
         return servicio;
         
@@ -61,5 +62,13 @@
             var ruta = Rutas.RUTABK + "/usuarios/"+idUsuario;
             return $http.get(ruta);
         };
+        
+        function recuperarPassword(usuario){
+            var ruta = Rutas.RUTABK+"/usuarios/recuperar/password";
+            var parametros = {
+                "usuario" : usuario
+            };
+            return $http.post(ruta,parametros);
+        }
     };
 })();

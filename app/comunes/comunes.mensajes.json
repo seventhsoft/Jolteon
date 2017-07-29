@@ -26,5 +26,26 @@
         "titulo":"Aviso.",
         "mensaje":"No cuenta con el permiso necesario para ingresar.",
         "duracion":5000
+    },
+    {
+        "id":5,
+        "tipo":"error",
+        "titulo":"Aviso.",
+        "mensaje":"Por favor ingresar el usuario.",
+        "duracion":5000
+    },
+    {
+        "id":6,
+        "tipo":"success",
+        "titulo":"Aviso.",
+        "mensaje":"Su solicitud ha sido procesada, recibira un correo electronico en unos minutos.",
+        "duracion":5000
+    },
+    {
+        "id":7,
+        "tipo":"alert",
+        "titulo":"Usuario no encontrado.",
+        "mensaje":"Por favor verifique que el usuario ingresado es el correcto.",
+        "duracion":5000
     }
 ]

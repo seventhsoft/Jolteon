@@ -60,8 +60,8 @@
       <![endif]-->
     </head>
 
-    <body  ng-controller="MainController as mc" ng-class="mc.sesion ? 'theme-template-dark grey lighten-3' : 'page-login'">
-      <div ng-show="!mc.sesion" ng-include src="'app/inicio/login.html'"></div>  
+    <body  ng-controller="MainController as mc" class="theme-template-dark grey lighten-3">
+        <div ng-show="!mc.sesion" ng-include src="'app/inicio/login.html'" class="page-login"></div>  
       <main ng-show="mc.sesion">
         <div ng-include src="'app/inicio/sidebar.html'"></div>
         <div class="main-container">
