@@ -4,8 +4,8 @@
     .module("kuni")
     .constant('Rutas',{
         /* DEV */
-        RUTABK : 'http://api.juegakuni.com.mx/lfs',
-        RUTAFR : 'http://localhost:8383/LSF-FRONT'
+        RUTABK : 'http://localhost:8080/lfs',
+        RUTAFR : 'http://localhost:8383/Jolteon'
         /* DEV */
         /* PRODUCCION *
         RUTABK : 'http://api.juegakuni.com.mx/lfs',

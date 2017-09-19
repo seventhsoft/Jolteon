@@ -68,6 +68,7 @@
             var parametros = {
                 "usuario" : usuario
             };
+            console.log(parametros);
             return $http.post(ruta,parametros);
         }
     };

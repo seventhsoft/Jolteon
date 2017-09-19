@@ -1,4 +1,4 @@
-<section>
+<section ng-controller="PatrocinadoresListadoControlador as plc">
     <div class="page-header">
         <h1><i class="md md-visibility"></i> Listado de patrocinadores</h1>
         <p class="lead">
@@ -19,49 +19,47 @@
                                 <th class="text-center">Teléfono</th>
                                 <th class="text-center">Preguntas-mensaje</th>
                                 <th class="text-center">Patrocinios</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">Estado</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">Starbucks SA. de CV.</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">John Doe</td>
-                                <td class="text-center">55 5555 5555</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center">120</td>
-                                <td class="text-center"><span class="label label-success">Activo</span></td>
+                            <tr ng-repeat="patrocinador in plc.listaPatrocinadores">
+                                <td class="text-center">{{patrocinador.organizacion}}</td>
+                                <td class="text-center">{{patrocinador.fecha_registro | fechaCorta}}</td>
+                                <td class="text-center">{{patrocinador.nombre}}</td>
+                                <td class="text-center">{{patrocinador.telefono}}</td>
+                                <td class="text-center">{{patrocinador.totalPreguntasMensaje}}</td>
+                                <td class="text-center">{{patrocinador.totalRecompensas}}</td>
+                                <td class="text-center"><span ng-class="patrocinador.activo ? 'label label-default' : 'label label-success'">{{patrocinador.activo ? 'Inactivo' : 'Activo'}}</span></td>
                                 <td class="text-center">
-                                    <a href="#/patrocinadores/patrocinadores-detalle">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                    </a>
-                                    <a href="#/patrocinadores/patrocinadores-recompensas-agregar">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-my-library-add"></i></button>
-                                    </a>
-                                    <a href="#/patrocinadores/patrocinadores-pregunta-mensaje-agregar">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-note-add"></i></button>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">Office Depot</td>
-                                <td class="text-center">01/07/2017</td>
-                                <td class="text-center">Jane Doe</td>
-                                <td class="text-center">55 6666 5555</td>
-                                <td class="text-center">4</td>
-                                <td class="text-center">0</td>
-                                <td class="text-center"><span class="label label-default">Inactivo</span></td>
-                                <td class="text-center">
-                                    <a href="#/patrocinadores/patrocinadores-detalle">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-visibility"></i></button>
-                                    </a>
-                                    <a href="#/patrocinadores/patrocinadores-recompensas-agregar">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-my-library-add"></i></button>
-                                    </a>
-                                    <a href="#/patrocinadores/patrocinadores-pregunta-mensaje-agregar">
-                                        <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Detalles"><i class="md md-note-add"></i></button>
-                                    </a>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-link btn-round" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title="Detalles" 
+                                        ng-click="plc.verPatrocinador(patrocinador)">
+                                        <i class="md md-visibility"></i>
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-link btn-round" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title="Agregar recompensa"
+                                        ng-click="plc.agregarRecompensa(patrocinador)">
+                                        <i class="md md-my-library-add"></i>
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-link btn-round" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title="Agregar pregunta mensaje"
+                                        ng-click="plc.agregarPreguntaMensaje(patrocinador)">
+                                        <i class="md md-note-add"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,9 +71,12 @@
                     </span>
                     <div class="row no-gutter">
                         <div class="form-group pull-right">
-                            <a href="#/patrocinadores/patrocinadores-agregar">
-                                <button type="submit" class="btn btn-primary">Agregar patrocinador</button>
-                            </a>
+                            <button 
+                                type="submit" 
+                                class="btn btn-primary"
+                                ng-click="plc.agregarPatrocinador()"
+                                >Agregar patrocinador
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -86,24 +87,24 @@
                 <fieldset>
                     <legend><i class="md md-filter-list"></i> Filtros</legend>
                     <div class="form-group">
-                        <label class="control-label">Estatus</label>
-                        <select class="form-control">
-                            <option>Selecciona</option>
-                            <option>Activo</option>
-                            <option>Inactivo</option>
+                        <label class="control-label">ESTADO</label>
+                        <select class="form-control" ng-model="plc.estado">
+                            <option value="">Selecciona</option>
+                            <option value="false">Activo</option>
+                            <option value="true">Inactivo</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Patrocinios</label>
-                        <select class="form-control">
-                            <option>Selecciona</option>
-                            <option>Si</option>
-                            <option>No</option>
+                        <select class="form-control" ng-model="plc.patrocinios">
+                            <option value="">Selecciona</option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
                         </select>
                     </div>
                     <div class="form-group pull-right">
-                        <button type="reset" class="btn btn-default">Limpiar</button>
-                        <button type="submit" class="btn btn-info">Filtrar</button>
+                        <button type="reset" class="btn btn-default" ng-click="plc.limpiar()">Limpiar</button>
+                        <button type="submit" class="btn btn-info" ng-click="plc.filtrar()">Filtrar</button>
                     </div>
                 </fieldset>
             </div>

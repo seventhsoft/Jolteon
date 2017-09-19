@@ -1,0 +1,15 @@
+[
+    {
+        "idPatrocinador":1,
+        "idPersona" : 12,
+        "nombre" : "Jane",
+        "apaterno" : "Doe",
+        "organizacion" : "Office Depot",
+        "telefono" : "5512345678",
+        "correo" : "correo@dominio.com",
+        "activo" : false,
+        "fecha_registro" : "01/07/2017",
+        "totalPreguntasMensaje" : 120,
+        "totalRecompensas" : 150
+    }
+]
