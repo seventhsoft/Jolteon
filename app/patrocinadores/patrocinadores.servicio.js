@@ -6,6 +6,7 @@
     PatrocinadoresServicio.$inject = ['$http','Rutas'];
     function PatrocinadoresServicio($http,Rutas){
         var servicio = {
+            patrocinador : {},
             obtieneListaPatrocinadores : obtieneListaPatrocinadores
         };
         return servicio;

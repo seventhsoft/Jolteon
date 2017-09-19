@@ -15,24 +15,28 @@
                     <fieldset> 
                         <legend>Datos del patrocinador</legend> 
                         <div class="form-group"> 
-                            <label for="inputEmail" class="control-label">Nombre del patrocinador</label> 
-                            <input type="text" class="form-control"> 
+                            <label for="inputEmail" class="control-label">Organización</label> 
+                            <input type="text" class="form-control" ng-model="pac.organizacion"> 
                         </div> 
                         <div class="form-group"> 
-                            <label for="inputEmail" class="control-label">Persona de contacto</label> 
-                            <input type="text" class="form-control"> 
+                            <label for="inputEmail" class="control-label">Nombre de la persona de contacto</label> 
+                            <input type="text" class="form-control" ng-model="pac.nombre"> 
+                        </div> 
+                        <div class="form-group"> 
+                            <label for="inputEmail" class="control-label">Apellidos de la persona de contacto</label> 
+                            <input type="text" class="form-control" ng-model="pac.apaterno"> 
                         </div> 
                         <div class="form-group"> 
                             <label for="inputEmail" class="control-label">Teléfono</label> 
-                            <input type="phone" class="form-control"> 
+                            <input type="phone" class="form-control" ng-model="pac.telefono"> 
                         </div> 
                         <div class="form-group"> 
                             <label for="inputEmail" class="control-label">Correo electrónico</label> 
-                            <input type="email" class="form-control"> 
+                            <input type="email" class="form-control" ng-model="pac.correo"> 
                         </div>
                         <div class="form-group"> 
-                            <a href="#/patrocinadores/patrocinadores-listado"><button type="submit" class="btn btn-primary">Guardar</button></a> 
-                            <button type="reset" class="btn btn-default">Cancelar</button> 
+                            <button type="submit" class="btn btn-primary" ng-click="pac.guardar()">Guardar</button> 
+                            <button type="reset" class="btn btn-default" ng-click="pac.cancelar()">Cancelar</button> 
                         </div> 
                     </fieldset> 
                 </form> 

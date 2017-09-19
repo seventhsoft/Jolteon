@@ -81,3 +81,5 @@ function confirmaMsj(titulo,mensaje,bottonOK,accionOK,bottonCancelar,accionCance
     };
     $.notification(options);
 };
+
+var fechaSistema = new Date();
