@@ -7,10 +7,10 @@
         DEBUG : true
     })
     .constant('EstadoConcurso',{
-        NO_CONFIGURADO : 0,
-        CONFIGURADO : 1,
-        ACTIVO : 2,
-        FINALIZADO : 3
+        PENDIENTE : { id:1, color:"label label-warning", descripcion : "Pendiente" },
+        PROGRAMADO : { id:2, color:"label label-info", descripcion : "Programado" },
+        ACTIVO : { id:3, color:"label label-success", descripcion : "Activo" },
+        FINALIZADO : { id:4, color:"label label-default", descripcion : "Finalizado" }
     }).constant('Perfiles',{
         ADMINISTRADOR: 1,
         JUGADOR : 2,

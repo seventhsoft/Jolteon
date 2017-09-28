@@ -26,6 +26,9 @@
                     plc.listaPatrocinadores = [];
                     plc.listaPatrocinadoresO = response.data;
                     plc.listaPatrocinadores = response.data;
+                },
+                function(){
+                    error();
                 }
             );
         }

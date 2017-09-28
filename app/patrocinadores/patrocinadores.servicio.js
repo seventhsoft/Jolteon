@@ -12,7 +12,8 @@
         return servicio;
         
         function obtieneListaPatrocinadores(){
-            var ruta = Rutas.RUTAFR + "/app/json/patrocinadores.json";
+            var ruta = Rutas.RUTABK + "/patrocinador";
+            console.log(ruta);
             return $http.get(ruta);
         }
     };

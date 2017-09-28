@@ -3,8 +3,8 @@
     angular
         .module("kuni")
         .controller("ConcursosListadoControlador", ConcursosListadoControlador);
-    ConcursosListadoControlador.$inject = ['ConcursosServicio','ComunesServicio','log'];
-    function ConcursosListadoControlador(Servicio,Comunes,log){
+    ConcursosListadoControlador.$inject = ['ConcursosServicio','ComunesServicio','log','EstadoConcurso'];
+    function ConcursosListadoControlador(Servicio,Comunes,log,EstadoConcurso){
         log.info("Incia Listado de concursos");
         var clc = this;
         clc.filtro = {
@@ -73,20 +73,45 @@
         };
         
         /* Carga inicial */
-        clc.listaConcursosOriginal = [
-            {
-                "clave" : "clave",
-                "fechaInicio" : "02/07/2017",
-                "fechaFinal":"05/07/2017",
-                "totalParticipantes":14140,
-                "totalRecompensas" : 150,
-                "totalGanadores":140,
-                "totalPreguntasContestadas":1404,
-                "totalSeriesContestadas":1404,
-                "estatus":"Finalizado",
-                "idEstatus":5
+        
+        Servicio.obtenerListaConcurso()
+        .then(
+            function(response){
+                clc.listaConcursosOriginal = response.data;
+                for(var i=0;i<clc.listaConcursosOriginal.length;i++){;
+                    switch (clc.listaConcursosOriginal[i].idEstadoConcurso){
+                        case EstadoConcurso.PENDIENTE.id : {
+                                clc.listaConcursosOriginal[i].estado = EstadoConcurso.PENDIENTE.descripcion;
+                                clc.listaConcursosOriginal[i].color = EstadoConcurso.PENDIENTE.color;
+                                break;
+                        }
+                        case EstadoConcurso.PROGRAMADO.id : {
+                                clc.listaConcursosOriginal[i].estado = EstadoConcurso.PROGRAMADO.descripcion;
+                                clc.listaConcursosOriginal[i].color = EstadoConcurso.PROGRAMADO.color;
+                                break;
+                        }
+                        case EstadoConcurso.ACTIVO.id : {
+                                clc.listaConcursosOriginal[i].estado = EstadoConcurso.ACTIVO.descripcion;
+                                clc.listaConcursosOriginal[i].color = EstadoConcurso.ACTIVO.color;
+                                break;
+                        }
+                        case EstadoConcurso.FINALIZADO.id : {
+                                clc.listaConcursosOriginal[i].estado = EstadoConcurso.FINALIZADO.descripcion;
+                                clc.listaConcursosOriginal[i].color = EstadoConcurso.FINALIZADO.color;
+                                break;
+                        }
+                        default : {
+                                clc.listaConcursosOriginal[i].estado = EstadoConcurso.PENDIENTE.descripcion;
+                                clc.listaConcursosOriginal[i].color = EstadoConcurso.PENDIENTE.color;
+                                break;
+                            }
+                    }
+                };
+                clc.listaConcursos = clc.listaConcursosOriginal;
+            },
+            function(){
+                error();
             }
-        ];
-        clc.listaConcursos = clc.listaConcursosOriginal;
+        );
     };
 })();

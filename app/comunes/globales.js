@@ -83,3 +83,7 @@ function confirmaMsj(titulo,mensaje,bottonOK,accionOK,bottonCancelar,accionCance
 };
 
 var fechaSistema = new Date();
+
+function error(){
+    location.href = "#/";
+}
