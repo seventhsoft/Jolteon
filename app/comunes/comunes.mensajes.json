@@ -47,5 +47,19 @@
         "titulo":"Usuario no encontrado.",
         "mensaje":"Por favor verifique que el usuario ingresado es el correcto.",
         "duracion":5000
+    },
+    {
+        "id":8,
+        "tipo":"error",
+        "titulo":"Aviso.",
+        "mensaje":"Ocurrio un error inesperado al intentar registrar al patrocinador.",
+        "duracion":5000
+    },
+    {
+        "id":9,
+        "tipo":"success",
+        "titulo":"Aviso.",
+        "mensaje":"Se ha registrado al patrocinador correctamentessss",
+        "duracion":5000
     }
 ]

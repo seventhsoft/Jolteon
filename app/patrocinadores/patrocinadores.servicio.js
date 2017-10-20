@@ -7,14 +7,19 @@
     function PatrocinadoresServicio($http,Rutas){
         var servicio = {
             patrocinador : {},
-            obtieneListaPatrocinadores : obtieneListaPatrocinadores
+            obtieneListaPatrocinadores : obtieneListaPatrocinadores,
+            insertaPatrocinador : insertaPatrocinador
         };
         return servicio;
         
         function obtieneListaPatrocinadores(){
             var ruta = Rutas.RUTABK + "/patrocinador";
-            console.log(ruta);
             return $http.get(ruta);
+        }
+        
+        function insertaPatrocinador(parametros){
+            var ruta = Rutas.RUTABK + "/patrocinador";
+            return $http.post(ruta,parametros);
         }
     };
 })();

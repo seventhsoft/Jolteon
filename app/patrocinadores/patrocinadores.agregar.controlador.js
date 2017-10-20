@@ -36,7 +36,26 @@
                 location.href = "#/patrocinadores/patrocinadores-listado";
             }else{
                 mensaje("alert","Aviso.","Todos los datos son requeridos",5000);
-            }   
+            }
+            
+            var parametros ={
+                "nombre": pac.nombre,
+                "apaterno": pac.apaterno,
+                "organizacion":pac.organizacion,
+                "telefono":pac.telefono,
+                "correo":pac.correo,
+                "activo":false
+            };
+            
+            Servicio.insertaPatrocinador(parametros)
+            .then(
+                function(){
+                    Comunes.mensajes(9);
+                },
+                function(){
+                    Comunes.mensajes(8);
+                }
+            );
         }
         
         function cancelar(){

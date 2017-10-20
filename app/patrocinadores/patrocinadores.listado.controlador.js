@@ -63,6 +63,7 @@
         }
         
         function verPatrocinador(patrocinador){
+            Servicio.patrocinador = patrocinador;
             location.href = "#/patrocinadores/patrocinadores-detalle";
         }
         
