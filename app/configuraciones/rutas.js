@@ -5,7 +5,7 @@
     .constant('Rutas',{
         /* DEV */
         RUTABK : 'http://localhost:8080/lfs',
-        RUTAFR : 'http://localhost:8383/Jolteon'
+        RUTAFR : 'http://localhost:8888/Jolteon'
         /* DEV */
         /* PRODUCCION *
         RUTABK : 'http://api.juegakuni.com.mx/lfs',
