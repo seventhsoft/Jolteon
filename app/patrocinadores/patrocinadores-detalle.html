@@ -37,30 +37,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>¿Cual es la obra de infraestructura mas importante en este sexenio?</td>
-                            <td>11/22/3333</td>
+                        <tr ng-repeat="preguntaMensaje in pdc.listaPreguntaMensaje | startFrom:pdc.actualPM * pdc.paginadoPM | limitTo:pdc.paginadoPM ">
+                            <td>{{preguntaMensaje.pregunta.descripcion}}</td>
+                            <td>{{preguntaMensaje.fechaRegistro | fechaCorta}}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar pregunta"><i class="md md-mode-edit"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>¿Cual es la obra de infraestructura mas importante en este sexenio?</td>
-                            <td>11/22/3333</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar pregunta"><i class="md md-mode-edit"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>¿Cual es la obra de infraestructura mas importante en este sexenio?</td>
-                            <td>11/22/3333</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar pregunta"><i class="md md-mode-edit"></i></button>
                                 <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
                             </td>
                         </tr>
@@ -79,10 +60,18 @@
                     <div class="col-sm-6">
                       <div class="bs-component">
                         <div class="btn-group">
-                          <button class="btn btn-flat btn-default disabled">Anterior</button>
-                          <button class="btn btn-flat btn-primary">1</button>
-                          <button class="btn btn-flat btn-link">de 25</button>
-                          <button class="btn btn-flat btn-default">Siguiente</button>
+                          <button class="btn btn-flat btn-default"
+                                  ng-disabled="pdc.actualPM === 0 "
+                                  ng-click="pdc.actualPM-1"
+                                  >Anterior
+                          </button>
+                          <button class="btn btn-flat btn-primary">{{pdc.actualPM + 1}}</button>
+                          <button class="btn btn-flat btn-link">de {{pdc.listaPreguntaMensaje.length / pdc.paginadoPM}}</button>
+                          <button class="btn btn-flat btn-default"
+                                  ng-disabled="pdc.actualPM >= pdc.listaPreguntaMensaje.length / pdc.paginadoPM -1 "
+                                  ng-click="pdc.actualPM+1"
+                                  >Siguiente
+                          </button>
                         </div>
                       </div>
                     </div>

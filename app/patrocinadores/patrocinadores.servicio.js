@@ -8,7 +8,9 @@
         var servicio = {
             patrocinador : {},
             obtieneListaPatrocinadores : obtieneListaPatrocinadores,
-            insertaPatrocinador : insertaPatrocinador
+            insertaPatrocinador : insertaPatrocinador,
+            obtieneListaPreguntaMensaje : obtieneListaPreguntaMensaje,
+            obtieneListaRecompesa : obtieneListaRecompesa
         };
         return servicio;
         
@@ -20,6 +22,16 @@
         function insertaPatrocinador(parametros){
             var ruta = Rutas.RUTABK + "/patrocinador";
             return $http.post(ruta,parametros);
+        }
+        
+        function obtieneListaPreguntaMensaje(idPatrocinador){
+            var ruta = Rutas.RUTABK + "/pregunta/mensaje/"+idPatrocinador;
+            return $http.get(ruta);
+        }
+        
+        function obtieneListaRecompesa(idPatrocinador){
+            var ruta = Rutas.RUTABK + "/recompensa/patrocinador/"+idPatrocinador;
+            return $http.get(ruta);
         }
     };
 })();
