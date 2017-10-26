@@ -52,24 +52,23 @@
                 <div class="row">
                     <span class="help-block text-right p-r-20">
                         <i class="md md-visibility"></i> Detalles |
-                        <i class="md md-mode-edit"></i> Editar | 
                         <i class="md md-delete"></i> Eliminar
                     </span>                    
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                      <div class="bs-component">
+                      <div class="bs-component" ng-show="pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM) > 1">
                         <div class="btn-group">
                           <button class="btn btn-flat btn-default"
                                   ng-disabled="pdc.actualPM === 0 "
-                                  ng-click="pdc.actualPM-1"
+                                  ng-click="pdc.actualPM=pdc.actualPM-1"
                                   >Anterior
                           </button>
                           <button class="btn btn-flat btn-primary">{{pdc.actualPM + 1}}</button>
-                          <button class="btn btn-flat btn-link">de {{pdc.listaPreguntaMensaje.length / pdc.paginadoPM}}</button>
+                          <button class="btn btn-flat btn-link">de {{pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM)}}</button>
                           <button class="btn btn-flat btn-default"
                                   ng-disabled="pdc.actualPM >= pdc.listaPreguntaMensaje.length / pdc.paginadoPM -1 "
-                                  ng-click="pdc.actualPM+1"
+                                  ng-click="pdc.actualPM=pdc.actualPM+1"
                                   >Siguiente
                           </button>
                         </div>
@@ -95,30 +94,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Recompensa destinada al ganador del nivel 1</td>
-                            <td class="text-center">60</td>
+                        <tr ng-repeat="recompensa in pdc.listaRecompensas | startFrom:pdc.actualRE * pdc.paginadoRE | limitTo:pdc.paginadoRE ">    
+                            <td>{{recompensa.tipoRecompensa.descripcion}}</td>
+                            <td class="text-center">{{recompensa.asignados}}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar recompensa"><i class="md md-mode-edit"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Recompensa destinada al ganador del nivel 2</td>
-                            <td class="text-center">30</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar recompensa"><i class="md md-mode-edit"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Recompensa nivel 3</td>
-                            <td class="text-center">30</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar recompensa"><i class="md md-mode-edit"></i></button>
                                 <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
                             </td>
                         </tr>
@@ -129,18 +109,25 @@
                 <div class="row">
                     <span class="help-block text-right p-r-20">
                         <i class="md md-visibility"></i> Detalles |
-                        <i class="md md-mode-edit"></i> Editar | 
                         <i class="md md-delete"></i> Eliminar
                     </span>                    
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                      <div class="bs-component">
+                      <div class="bs-component" ng-show="pdc.totalPaginas(pdc.listaRecompensas.length,pdc.paginadoRE)>1">
                         <div class="btn-group">
-                          <button class="btn btn-flat btn-default disabled">Anterior</button>
-                          <button class="btn btn-flat btn-primary">1</button>
-                          <button class="btn btn-flat btn-link">de 25</button>
-                          <button class="btn btn-flat btn-default">Siguiente</button>
+                          <button class="btn btn-flat btn-default"
+                                  ng-disabled="pdc.actualRE === 0 "
+                                  ng-click="pdc.actualRE=pdc.actualRE-1"
+                                  >Anterior
+                          </button>
+                          <button class="btn btn-flat btn-primary">{{pdc.actualRE + 1}}</button>
+                          <button class="btn btn-flat btn-link">de {{pdc.totalPaginas(pdc.listaRecompensas.length,pdc.paginadoRE)}}</button>
+                          <button class="btn btn-flat btn-default"
+                                  ng-disabled="pdc.actualRE >= pdc.listaRecompensas.length / pdc.paginadoRE -1 "
+                                  ng-click="pdc.actualRE=pdc.actualRE+1"
+                                  >Siguiente
+                          </button>
                         </div>
                       </div>
                     </div>

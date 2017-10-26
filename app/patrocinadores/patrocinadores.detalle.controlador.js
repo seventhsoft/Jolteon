@@ -12,12 +12,15 @@
         pdc.listaRecompensas = [];
         pdc.paginadoPM = 5;
         pdc.actualPM = 0;
+        pdc.paginadoRE = 5;
+        pdc.actualRE = 0;
+        pdc.totalPaginas = totalPaginas;
         pdc.cargaInicial = cargaInicial;
-        
-        
-        
         pdc.cargaInicial();
-
+        
+        function totalPaginas(a,b) {
+            return Math.ceil(a / b);
+        };
         
         function cargaInicial(){
             Servicio.obtieneListaPreguntaMensaje(pdc.patrocinador.idPatrocinador)
@@ -38,6 +41,8 @@
                 function(response){
                     if(response.status !== 204){
                         pdc.listaRecompensas=response.data;
+                        console.log(pdc.listaRecompensas.length);
+                        console.log(pdc.paginadoRE);
                     }else{
                         pdc.listaRecompensas = [];
                     }
