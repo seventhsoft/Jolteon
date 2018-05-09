@@ -13,6 +13,7 @@
         ccc.concurso.nuevo = true;
         ccc.concurso.anio = "";
         ccc.concurso.mes = "";
+        ccc.concurso.descripcion = "";
         ccc.consecutivoNivel = 0;
         ccc.listaNiveles = [];
         ccc.obtenerListaAnios = obtenerListaAnios;

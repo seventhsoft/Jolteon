@@ -13,49 +13,84 @@
         pac.correo = "";
         pac.guardar = guardar;
         pac.cancelar = cancelar;
+        pac.edit = false;
+        pac.patrocinador={};
+        
+        
+        if(Servicio.patrocinador !== {}){
+            pac.edit = true;
+            pac.patrocinador=Servicio.patrocinador;
+            pac.organizacion = pac.patrocinador.organizacion;
+            pac.nombre = pac.patrocinador.nombre;
+            pac.apaterno = pac.patrocinador.apaterno;
+            pac.telefono = pac.patrocinador.telefono;
+            pac.correo = pac.patrocinador.correo;
+            Servicio.patrocinador ={};
+        }
         
         function guardar(){
-            var ban = true;
             if(pac.organizacion === ""){
-                ban = false; 
+                return Comunes.mensajes(10);
             }
             if(pac.nombre === ""){
-                ban = false; 
+                return Comunes.mensajes(10);
             }
             if(pac.apaterno === ""){
-                ban = false; 
+                return Comunes.mensajes(10);
             }
             if(pac.telefono === ""){
-                ban = false; 
+                return Comunes.mensajes(10);
             }
             if(pac.correo === ""){
-                ban = false; 
+                return Comunes.mensajes(10);
             }
-            if(ban){
-                mensaje("success","Aviso.","Patrocinador agregado correctamente",5000);
-                location.href = "#/patrocinadores/patrocinadores-listado";
+            if(pac.edit){
+               var parametros ={
+                    "nombre": pac.nombre,
+                    "apaterno": pac.apaterno,
+                    "organizacion":pac.organizacion,
+                    "telefono":pac.telefono,
+                    "correo":pac.correo,
+                    "idPersona": pac.patrocinador.idPersona,
+                    "idPatrocinador": pac.patrocinador.idPatrocinador
+                };
+                Servicio.actualizaPatrocinador(parametros)
+                .then(
+                    function(){
+                        Comunes.mensajes(9);
+                        pac.patrocinador.nombre =  pac.nombre;
+                        pac.patrocinador.apaterno =  pac.apaterno;
+                        pac.patrocinador.organizacion =  pac.organizacion;
+                        pac.patrocinador.telefono =  pac.telefono;
+                        pac.patrocinador.correo =  pac.correo;
+                        Servicio.patrocinador=pac.patrocinador;
+                        location.href = "#/patrocinadores/patrocinadores-detalle";
+                    },
+                    function(){
+                        Comunes.mensajes(8);
+                    }
+                );  
             }else{
-                mensaje("alert","Aviso.","Todos los datos son requeridos",5000);
+                var parametros ={
+                    "nombre": pac.nombre,
+                    "apaterno": pac.apaterno,
+                    "organizacion":pac.organizacion,
+                    "telefono":pac.telefono,
+                    "correo":pac.correo,
+                    "activo":false
+                };
+                Servicio.insertaPatrocinador(parametros)
+                .then(
+                    function(){
+                        Comunes.mensajes(9);
+                        location.href = "#/patrocinadores/patrocinadores-listado";
+                    },
+                    function(){
+                        Comunes.mensajes(8);
+                    }
+                );
             }
-            
-            var parametros ={
-                "nombre": pac.nombre,
-                "apaterno": pac.apaterno,
-                "organizacion":pac.organizacion,
-                "telefono":pac.telefono,
-                "correo":pac.correo,
-                "activo":false
-            };
-            
-            Servicio.insertaPatrocinador(parametros)
-            .then(
-                function(){
-                    Comunes.mensajes(9);
-                },
-                function(){
-                    Comunes.mensajes(8);
-                }
-            );
+
         }
         
         function cancelar(){

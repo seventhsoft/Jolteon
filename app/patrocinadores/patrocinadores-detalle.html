@@ -20,6 +20,11 @@
                 <p>Teléfono de contacto: <strong>{{pdc.patrocinador.telefono}}</strong></p>
                 <p>Correo electrónico: <strong>{{pdc.patrocinador.correo}}</strong></p>
             </div>
+            <div class="card-action clearfix">
+                <div class="pull-right">
+                    <button class="btn btn-primary" ng-click="pdc.actualizarPatrocinador()">Actualizar</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-md-9">
@@ -41,8 +46,8 @@
                             <td>{{preguntaMensaje.pregunta.descripcion}}</td>
                             <td>{{preguntaMensaje.fechaRegistro | fechaCorta}}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
+                                <button type="button" ng-click="pdc.actualizarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-edit"></i></button>
+                                <button type="button" ng-click="pdc.eliminarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -51,7 +56,7 @@
             <div class="card-action clearfix">
                 <div class="row">
                     <span class="help-block text-right p-r-20">
-                        <i class="md md-visibility"></i> Detalles |
+                        <i class="md md-visibility"></i> Editar |
                         <i class="md md-delete"></i> Eliminar
                     </span>                    
                 </div>
@@ -75,7 +80,7 @@
                       </div>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-primary">Agregar pregunta mensaje</button>
+                        <button type="button" class="btn btn-primary" ng-click="pdc.agregarPreguntaMensaje()" >Agregar</button>
                     </div>
                 </div>
             </div>
@@ -89,17 +94,21 @@
                     <thead>
                         <tr>
                             <th>Recompensa</th>
+                            <th class="text-center">Tipo</th>
                             <th class="text-center">Cantidad</th>
+                            <th class="text-center">Asignados</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="recompensa in pdc.listaRecompensas | startFrom:pdc.actualRE * pdc.paginadoRE | limitTo:pdc.paginadoRE ">    
-                            <td>{{recompensa.tipoRecompensa.descripcion}}</td>
+                            <td>{{recompensa.descripcion}}</td>
+                            <td class="text-center">{{recompensa.tipoRecompensa.descripcion}}</td>
+                            <td class="text-center">{{recompensa.cantidad}}</td>
                             <td class="text-center">{{recompensa.asignados}}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Ver detalles"><i class="md md-visibility"></i></button>
-                                <button type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
+                                <button type="button" ng-click="pdc.actualizarRecompensa(recompensa)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-edit"></i></button>
+                                <button ng-if="recompensa.asignados===0" ng-click="pdc.eliminarRecompensa(recompensa)" type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -108,7 +117,7 @@
             <div class="card-action clearfix">
                 <div class="row">
                     <span class="help-block text-right p-r-20">
-                        <i class="md md-visibility"></i> Detalles |
+                        <i class="md md-visibility"></i> Editar |
                         <i class="md md-delete"></i> Eliminar
                     </span>                    
                 </div>
@@ -132,7 +141,7 @@
                       </div>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-primary">Agregar recompensa</button>
+                        <button type="submit" class="btn btn-primary" ng-click="pdc.agregarRecompensa()">Agregar</button>
                     </div>
                 </div>
             </div>

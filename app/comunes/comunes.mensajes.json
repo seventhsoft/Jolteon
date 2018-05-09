@@ -52,14 +52,21 @@
         "id":8,
         "tipo":"error",
         "titulo":"Aviso.",
-        "mensaje":"Ocurrio un error inesperado al intentar registrar al patrocinador.",
+        "mensaje":"Ocurrio un error inesperado al intentar guardar los datos del patrocinador.",
         "duracion":5000
     },
     {
         "id":9,
         "tipo":"success",
         "titulo":"Aviso.",
-        "mensaje":"Se ha registrado al patrocinador correctamentessss",
+        "mensaje":"Se ha guardado al patrocinador correctamente",
+        "duracion":5000
+    },
+    {
+        "id":10,
+        "tipo":"alert",
+        "titulo":"Aviso.",
+        "mensaje":"Todos los datos son requeridos.",
         "duracion":5000
     }
 ]

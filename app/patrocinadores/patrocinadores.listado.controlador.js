@@ -67,11 +67,13 @@
             location.href = "#/patrocinadores/patrocinadores-detalle";
         }
         
-        function agregarRecompensa(patrcinador){
+        function agregarRecompensa(patrocinador){
+            Servicio.patrocinador = patrocinador;
             location.href = "#/patrocinadores/patrocinadores-recompensas-agregar";
         }
         
-        function agregarPreguntaMensaje(patrcinador){
+        function agregarPreguntaMensaje(patrocinador){
+            Servicio.patrocinador = patrocinador;
             location.href = "#/patrocinadores/patrocinadores-pregunta-mensaje-agregar";
         }
     };

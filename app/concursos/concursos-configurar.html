@@ -5,17 +5,17 @@
             Configuración de concurso
         </h1>
         <p class="lead">
-            En esta sección podrás configurar y/o editar la configuración de un concurso siempre y cuando no esté activo.
+            En esta sección podrás crear y/o editar la configuración de un concurso siempre y cuando no esté activo.
         </p>
     </div>
     <div class="row m-b-20">
         <form class="form-floating placeholder-form">
             <div class="col-md-12">
                 <div class="well white">
-                    <h4><i class="md md-filter-1"></i> Fecha del concurso</h4>
+                    <h4><i class="md md-filter-1"></i> Concurso</h4>
                     <fieldset>
-                        <div class="col-lg-6">
-                            <div class="col-md-8">
+                        <div class="col-md-9">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label normal">Mes</label>
                                     <select class="form-control" ng-model="ccc.concurso.mes">
@@ -35,7 +35,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label normal"><i class="md md-timer"></i> Año</label>
                                     <select class="form-control" ng-model="ccc.concurso.anio" ng-options="anio.valor as anio.descripcion for anio in ccc.listaAnios">
@@ -43,8 +43,14 @@
                                     </select>
                                 </div>
                             </div>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label normal">Descripción</label>
+                                    <input type="text" class="form-control" ng-model="ccc.concurso.descripcion" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group pull-right">
+                        <div class="form-group pull-right col-md-3">
                             <button type="reset" class="btn btn-default">Cancelar</button>
                             <button type="submit" class="btn btn-primary" ng-click="ccc.guardarConcurso()">Guardar</button>
                         </div>

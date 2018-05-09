@@ -13,26 +13,35 @@
             <div class="well white">
                 <form class="form-floating ng-pristine ng-valid">
                     <fieldset>
+                        <legend>Concurso</legend>
+                            <span class="help-block">Seleccione el concurso donde participara la pregunta-mensaje</span>
+                        <div class="form-group">
+                            <label for="" class="control-label normal">Concurso</label>
+                            <select class="form-control">
+                                <option value="">Elije</option>
+                                <option value="01">Enero</option>
+                                <option value="02">Febrero</option>
+                            </select>
+                        </div>
                         <legend>Pregunta</legend>
                             <span class="help-block">La "Pregunta-mensaje" debera ser un texto no mayor a 140 caracteres</span>
-
                         <div class="form-group">
-                            <label for="" class="control-label">Redacta la pregunta-mensaje</label>
+                            <label for="" class="control-label normal">Redacta la pregunta-mensaje</label>
                             <input type="text" class="form-control">
                         </div>
                         <legend>Respuestas</legend>
                             <span class="help-block">Las respuestas deberán ser un texto no mayor a 30 caracteres</span>
 
                         <div class="form-group">
-                            <label for="" class="control-label">Respuesta correcta</label>
+                            <label for="" class="control-label normal">Respuesta correcta</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="" class="control-label">Respuesta erronea 1</label>
+                            <label for="" class="control-label normal">Respuesta erronea 1</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="" class="control-label">Respuesta erronea 2</label>
+                            <label for="" class="control-label normal">Respuesta erronea 2</label>
                             <input type="text" class="form-control">
                         </div>
                     </fieldset>
@@ -45,14 +54,14 @@
                     <fieldset>
                         <legend>Clase</legend>
                         <div class="form-group">
-                            <label for="textArea" class="control-label">Redacta la clase</label>
-                            <textarea class="form-control vertical" rows="3" id="textArea"></textarea>
+                            <label for="textArea" class="control-label normal">Redacta la clase</label>
+                            <textarea class="form-control vertical" rows="3" id="textArea" maxlength="300"></textarea>
                             <span class="help-block">La "Clase" debera ser un texto no mayor a 300 caracteres</span>
                         </div>
                         <div class="form-group">
                             <legend>Imagen</legend>
                             <div class="form-group">
-                                <label class="control-label normal">Elije un archivo</label>
+                                <label class="control-label normal normal">Elije un archivo</label>
                                 <input type="file" name="file" accept="image/*" />
                             </div>
                         </div>
