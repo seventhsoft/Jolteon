@@ -16,7 +16,6 @@
                                 <th class="text-center">Fecha de alta</th>
                                 <th class="text-center">Patrocinador</th>
                                 <th class="text-center">Contacto</th>
-                                <th class="text-center">Recompensas</th>
                                 <th class="text-center">Preguntas-mensaje</th>
                                 <th class="text-center">Estado</th>
                                 <th class="text-center">Acciones</th>
@@ -27,7 +26,6 @@
                                 <td class="text-center">{{patrocinador.fechaRegistro | fechaCorta}}</td>
                                 <td class="text-center">{{patrocinador.organizacion}}</td>
                                 <td class="text-center">{{patrocinador.nombre}}</td>
-                                <td class="text-center">{{patrocinador.totalRecompensas}}</td>
                                 <td class="text-center">{{patrocinador.totalPreguntasMensaje}}</td>
                                 <td class="text-center"><span ng-class="patrocinador.activo ? 'label label-default' : 'label label-success'">{{patrocinador.activo ? 'Inactivo' : 'Activo'}}</span></td>
                                 <td class="text-center">
@@ -39,15 +37,6 @@
                                         title="Detalles" 
                                         ng-click="plc.verPatrocinador(patrocinador)">
                                         <i class="md md-visibility"></i>
-                                    </button>
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-link btn-round" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="Agregar recompensa"
-                                        ng-click="plc.agregarRecompensa(patrocinador)">
-                                        <i class="md md-my-library-add"></i>
                                     </button>
                                     <button 
                                         type="button" 

@@ -18,7 +18,6 @@
                                 <th class="text-center">Inicio</th>
                                 <th class="text-center">Término</th>
                                 <th class="text-center">Participantes</th>
-                                <th class="text-center">Recompensas</th>
                                 <th class="text-center">Estatus</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
@@ -30,7 +29,6 @@
                                 <td class="text-center">{{concurso.fechaInicio | fechaCorta}}</td>
                                 <td class="text-center">{{concurso.fechafin | fechaCorta}}</td>
                                 <td class="text-center">{{concurso.participantes !== null ? concurso.participantes : 0}}</td>
-                                <td class="text-center">{{concurso.recompensa !== null ? concurso.recompensa : 0}}</td>
                                 <td class="text-center"><span ng-class="concurso.color">{{concurso.estado}}</span></td>
                                 <td class="text-center">
                                     <button 

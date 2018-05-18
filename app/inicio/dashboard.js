@@ -3,97 +3,84 @@
     angular
         .module("kuni")
         .controller("DashboarAdministradortrolador", DashboarAdministradortrolador);
-    DashboarAdministradortrolador.$inject = ['ConcursosServicio','ComunesServicio','log'];
-    function DashboarAdministradortrolador(Servicio,Comunes,log){
+    DashboarAdministradortrolador.$inject = ['ConcursosServicio','ComunesServicio','EstadoConcurso','PatrocinadoresServicio'];
+    function DashboarAdministradortrolador(Servicio,Comunes,EstadoConcurso,PatrocinadoresServicio){
         var dbc = this;
         dbc.listaPatrocinadores = [];
-        dbc.listaAnunciantes = [];
         dbc.listaConcursos = [];
         dbc.concursoActivo = {};
-        dbc.concursoProximo = {};
         dbc.detalleConcurso = detalleConcurso;
         dbc.configurarConcurso = configurarConcurso;
+        dbc.cargaInicial = cargaInicial;
+        dbc.cargaInicial();
+        
         
         function detalleConcurso(concurso){
-            
+            Servicio.concurso = concurso;
+            location.href="#/concursos/concursos-detalle";
+            window.scrollTo(0, 0);
         };
         
         function configurarConcurso(concurso){
-            
+            Servicio.origen = 1;
+            Servicio.concurso = concurso;
+            location.href="#/concursos/concursos-configurar";
+            window.scrollTo(0, 0);
         };
         
         /* Carga inicial */
-        dbc.concursoActivo = {
-            clave : "KUNI201707",
-            fechaInicio : "01/01/2017",
-            fechaFin : "31/01/2017",
-            recompensas :[
-                {
-                    idTipoRecompensa : 1,
-                    remitidos : 18,
-                    cantidad : 50
+        
+        function cargaInicial(){
+            Servicio.obtenerListaConcurso()
+            .then(
+                function(response){
+                    dbc.listaConcursos = response.data;
+                    for(var i=0;i<dbc.listaConcursos.length;i++){;
+                        switch (dbc.listaConcursos[i].idEstadoConcurso){
+                            case EstadoConcurso.PENDIENTE.id : {
+                                    dbc.listaConcursos[i].estado = EstadoConcurso.PENDIENTE.descripcion;
+                                    dbc.listaConcursos[i].color = EstadoConcurso.PENDIENTE.color;
+                                    break;
+                            }
+                            case EstadoConcurso.PROGRAMADO.id : {
+                                    dbc.listaConcursos[i].estado = EstadoConcurso.PROGRAMADO.descripcion;
+                                    dbc.listaConcursos[i].color = EstadoConcurso.PROGRAMADO.color;
+                                    break;
+                            }
+                            case EstadoConcurso.ACTIVO.id : {
+                                    dbc.listaConcursos[i].estado = EstadoConcurso.ACTIVO.descripcion;
+                                    dbc.listaConcursos[i].color = EstadoConcurso.ACTIVO.color;
+                                    dbc.concursoActivo = dbc.listaConcursos[i];
+                                    break;
+                            }
+                            case EstadoConcurso.FINALIZADO.id : {
+                                    dbc.listaConcursos[i].estado = EstadoConcurso.FINALIZADO.descripcion;
+                                    dbc.listaConcursos[i].color = EstadoConcurso.FINALIZADO.color;
+                                    break;
+                            }
+                            default : {
+                                    dbc.listaConcursos[i].estado = EstadoConcurso.PENDIENTE.descripcion;
+                                    dbc.listaConcursos[i].color = EstadoConcurso.PENDIENTE.color;
+                                    break;
+                                }
+                        }
+                    };
                 },
-                {
-                    idTipoRecompensa : 2,
-                    remitidos : 14,
-                    cantidad : 40
-                },
-                {
-                    idTipoRecompensa : 3,
-                    remitidos : 18,
-                    cantidad : 30
-                },
-                {
-                    idTipoRecompensa : 4,
-                    remitidos : 6,
-                    cantidad : 20
-                },
-                {
-                    idTipoRecompensa : 5,
-                    remitidos : 1,
-                    cantidad : 10
+                function(){
+                    error();
                 }
-            ]
-        };
-        
-        dbc.concursoProximo = {
-            clave : "KUNI201708",
-            dias: 14,
-            fechaInicio : "1 de julio de 2017",
-            fechaFin : "31 de julio de 2017",
-            idEstado : 2,
-            estado : "Programado",
-            color : "label label-success"
-        };
-        
-        dbc.listaPatrocinadores = [
-            {
-                organizacion : "Patrocinador 1",
-                preguntas : 20
-            }
-        ];
-        
-        dbc.listaAnunciantes = [
-            {
-                organizacion : "Anunciante 1",
-                campanas : 2,
-                banners : 6
-            }
-        ];
-        
-        dbc.listaConcursos = [
-            { 
-                clave : "KUNI201707",
-                fechaInicio : "01/01/2017",
-                fechaFin : "31/01/2017",
-                idEstado : 1,
-                estado : "Programado",
-                color : "label label-success",
-                cantidadRecompensas : 280,
-                cantidadParticipantes : 12380
-            }
-        ];
-        
+            );
+            
+            PatrocinadoresServicio.obtieneListaPatrocinadores()
+            .then(
+                function(response){
+                    dbc.listaPatrocinadores = response.data;
+                },
+                function(){
+                    dbc.listaPatrocinadores = [];
+                }
+            );
+        }
     };
 
 })();

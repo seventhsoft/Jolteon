@@ -68,5 +68,12 @@
         "titulo":"Aviso.",
         "mensaje":"Todos los datos son requeridos.",
         "duracion":5000
+    },
+    {
+        "id":11,
+        "tipo":"success",
+        "titulo":"Aviso.",
+        "mensaje":"Se ha guardado el concurso correctamente",
+        "duracion":5000
     }
 ]

@@ -45,6 +45,7 @@
                 return Comunes.mensajes(10);
             }
             if(pac.edit){
+                console.log("Actualiza");
                var parametros ={
                     "nombre": pac.nombre,
                     "apaterno": pac.apaterno,
@@ -71,6 +72,7 @@
                     }
                 );  
             }else{
+                console.log("Inserta");
                 var parametros ={
                     "nombre": pac.nombre,
                     "apaterno": pac.apaterno,

@@ -12,7 +12,9 @@
             listaNiveles : [],
             listaTiposRecompensa : [],
             obtenerListaTipoReconpensa : obtenerListaTipoReconpensa,
-            obtenerListaConcurso : obtenerListaConcurso
+            obtenerListaConcurso : obtenerListaConcurso,
+            insertarConcurso : insertarConcurso,
+            actualizarConcurso : actualizarConcurso
         };
         return servicio;
         
@@ -26,5 +28,14 @@
             return $http.get(ruta);
         };
         
+        function insertarConcurso(concurso){
+            var ruta = Rutas.RUTABK + "/concurso";
+            return $http.post(ruta,concurso);
+        }
+        
+        function actualizarConcurso(concurso){
+            var ruta = Rutas.RUTABK + "/concurso";
+            return $http.put(ruta,concurso);
+        }
     };
 })();

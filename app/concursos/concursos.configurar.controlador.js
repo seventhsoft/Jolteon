@@ -8,20 +8,18 @@
         log.info("Inicia configurar controlador");
         var ccc = this;
         ccc.listaAnios = [];
+        ccc.listaMeses = [];
         ccc.concurso = {};
         ccc.concurso.idConcurso = null;
         ccc.concurso.nuevo = true;
-        ccc.concurso.anio = "";
-        ccc.concurso.mes = "";
+        ccc.concurso.anio = null;
+        ccc.concurso.mes = null;
         ccc.concurso.descripcion = "";
         ccc.consecutivoNivel = 0;
         ccc.listaNiveles = [];
         ccc.obtenerListaAnios = obtenerListaAnios;
         ccc.cargaNuevo = cargaNuevo;
         ccc.cargaActualiza = cargaActualiza;
-        ccc.cargaAgregarRecompensa = cargaAgregarRecompensa;
-        ccc.agregarRecompensa = agregarRecompensa;
-        ccc.eliminarRecompensa = eliminarRecompensa;
         ccc.guardarConcurso = guardarConcurso;
         ccc.insertaConcurso = insertaConcurso;
         ccc.actualizaConcurso = actualizaConcurso;
@@ -36,18 +34,6 @@
         };
         Servicio.origen = 0;
         
-        function agregarRecompensa(nivel){
-            log.info("Inicia agregar recompensa");
-            /* tomamos una foto */
-            Servicio.concurso = ccc.concurso;
-            Servicio.listaNiveles = ccc.listaNiveles;
-            Servicio.nivel = nivel;
-            location.href = "#/concursos/concursos-recompensa-asignar";
-        };
-        
-        function eliminarRecompensa(nivel){
-            nivel.recompensa = {};
-        };
         
         function guardarConcurso(){
             log.info("Inicia guardar concurso");
@@ -59,11 +45,28 @@
         };
         
         function insertaConcurso(){
-            
+            Servicio.insertarConcurso(ccc.concurso)
+            .then(
+                function(){
+                    Comunes.mensaje(11);
+                },
+                function(){
+                   Comunes.mensaje(3);
+                }
+            );
+    
         };
         
         function actualizaConcurso(){
-            
+           Servicio.actualizarConcurso(ccc.concurso)
+            .then(
+                function(){
+                    Comunes.mensaje(11);
+                },
+                function(){
+                   Comunes.mensaje(3);
+                }
+            ); 
         };
         
         function validaConcurso(){
@@ -107,6 +110,20 @@
                 var anio = {"valor": parseInt(y), "descripcion": y};
                 ccc.listaAnios.push(anio);
             };
+            ccc.listaMeses = [
+                { "valor":1,  "descripcion":"Enero"},
+                { "valor":2,  "descripcion":"Febrero"},
+                { "valor":3,  "descripcion":"Marzo"},
+                { "valor":4,  "descripcion":"Abril"},
+                { "valor":5,  "descripcion":"Mayo"},
+                { "valor":6,  "descripcion":"Junio"},
+                { "valor":7,  "descripcion":"Julio"},
+                { "valor":8,  "descripcion":"Agosto"},
+                { "valor":9,  "descripcion":"Septiembre"},
+                { "valor":10,  "descripcion":"Octubre"},
+                { "valor":11,  "descripcion":"Noviembre"},
+                { "valor":12,  "descripcion":"Diciembre"}
+            ];
         };
         
         function cargaNuevo(){
@@ -131,16 +148,14 @@
         
         function cargaActualiza(){
             log.info("Inicia carga edición de concurso");
+            ccc.concurso = Servicio.concurso;
+            Servicio.concurso = {};
             ccc.concurso.nuevo = false;
+            var fecha = new Date(ccc.concurso.fechaInicio);
+            ccc.concurso.anio = fecha.getFullYear();
+            ccc.concurso.mes = fecha.getMonth()+1;
+            console.log(ccc.concurso);
         };
         
-        function cargaAgregarRecompensa(){
-            log.info("Inicia carga agregar recompensa");
-            ccc.concurso = Servicio.concurso;
-            ccc.listaNiveles = Servicio.listaNiveles;
-            Servicio.origen = 0;
-            Servicio.concurso = {};
-            Servicio.listaNiveles = [];
-        };
     };
 })();

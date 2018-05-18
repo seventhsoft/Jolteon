@@ -9,20 +9,14 @@
         pdc.patrocinador = Servicio.patrocinador;
         Servicio.patrocinador = {};
         pdc.listaPreguntaMensaje = [];
-        pdc.listaRecompensas = [];
-        pdc.paginadoPM = 5;
+        pdc.paginadoPM = 10;
         pdc.actualPM = 0;
-        pdc.paginadoRE = 5;
-        pdc.actualRE = 0;
         pdc.totalPaginas = totalPaginas;
         pdc.cargaInicial = cargaInicial;
         pdc.actualizarPatrocinador = actualizarPatrocinador;
         pdc.agregarPreguntaMensaje = agregarPreguntaMensaje;
         pdc.actualizarPreguntaMensaje = actualizarPreguntaMensaje;
         pdc.eliminarPreguntaMensaje = eliminarPreguntaMensaje;
-        pdc.agregarRecompensa =  agregarRecompensa;
-        pdc.actualizarRecompensa =  actualizarRecompensa;
-        pdc.eliminarRecompensa = eliminarRecompensa;
         pdc.cargaInicial();
         
         function totalPaginas(a,b) {
@@ -30,22 +24,12 @@
         };
         
         function actualizarPreguntaMensaje(pregunta){
-            
+            Servicio.patrocinador = pdc.patrocinador;
+            Servicio.pregunta = pregunta;
+            location.href = "#/patrocinadores/patrocinadores-pregunta-mensaje-agregar";
         }
         
         function eliminarPreguntaMensaje(pregunta){
-            
-        }
-        
-        function agregarRecompensa(){
-            
-        }
-        
-        function actualizarRecompensa(recompensa){
-            
-        }
-        
-        function eliminarRecompensa(recompensa){
             
         }
         
@@ -71,20 +55,6 @@
                     }else{
                         error();
                     }
-                }
-            );
-            Servicio.obtieneListaRecompesa(pdc.patrocinador.idPatrocinador)
-            .then(
-                function(response){
-                    if(response.status !== 204){
-                        pdc.listaRecompensas=response.data;
-                        console.log(pdc.listaRecompensas);
-                    }else{
-                        pdc.listaRecompensas = [];
-                    }
-                },
-                function(){
-                    error();
                 }
             );
         }

@@ -15,17 +15,42 @@
             obtieneListaRecompesa : obtieneListaRecompesa,
             insertarPreguntaMensaje:insertarPreguntaMensaje,
             actualizarPreguntaMensaje:actualizarPreguntaMensaje,
-            obtenerListaConcurso : ConcursosServicio.obtenerListaConcurso
+            obtenerListaConcurso : ConcursosServicio.obtenerListaConcurso,
+            obtenerPregunta: obtenerPregunta,
+            obtenerPreguntaMensaje: obtenerPreguntaMensaje,
+            obtenerListaRespuestas: obtenerListaRespuestas,
+            actualizarRespuesta : actualizarRespuesta
+            
         };
         return servicio;
         
+        function obtenerPregunta(idPregunta){
+            var ruta = Rutas.RUTABK + "/pregunta/respuestas/"+idPregunta;
+            return $http.get(ruta);
+        }
+        
+        function obtenerPreguntaMensaje(idPreguntaMensaje){
+            var ruta = Rutas.RUTABK + "/pregunta/preguntaMensaje/"+idPreguntaMensaje;
+            return $http.get(ruta);
+        }
+        
+        function obtenerListaRespuestas(idPregunta){
+            var ruta = Rutas.RUTABK + "/pregunta/respuestas/"+idPregunta;
+            return $http.get(ruta);
+        }
+        
+        function actualizarRespuesta(respuesta){
+            var ruta = Rutas.RUTABK + "/pregunta/respuesta";
+            return $http.put(ruta,respuesta);
+        }
+        
         function insertarPreguntaMensaje(parametros){
-            var ruta = Rutas.RUTABK + "/pregunta"; // actualizar ruta
+            var ruta = Rutas.RUTABK + "/pregunta"; // Falta
             return $http.post(ruta,parametros);
         }
         
         function actualizarPreguntaMensaje(parametros){
-            var ruta = Rutas.RUTABK + "/pregunta"; // actualizar ruta
+            var ruta = Rutas.RUTABK + "/pregunta"; // Falta
             return $http.post(ruta,parametros);
         }
         

@@ -6,11 +6,12 @@
             </div>
             <div class="p-20 no-p-t">
                 <div class="row gutter-14 kpi-dashboard">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header relative">
                                 <div class="card-title">Concurso activo</div>
-                                <div class="small grey-text">Clave de concurso {{dbc.concursoActivo.clave}}</div>
+                                <div class="small grey-text">Clave de concurso {{dbc.concursoActivo.idConcurso}}</div>
+                                <div class="small grey-text">Descripción: {{dbc.concursoActivo.descripcion}}</div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-small grey-text">
@@ -21,19 +22,11 @@
                                     <tbody>
                                         <tr>
                                             <td>Fecha de inicio</td>
-                                            <td>{{dbc.concursoActivo.fechaInicio}}</td>
+                                            <td>{{dbc.concursoActivo.fechaInicio | fechaCorta}}</td>
                                         </tr>
                                         <tr>
                                             <td>Fecha de término</td>
-                                            <td>{{dbc.concursoActivo.fechaFin}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Recompensas</td>
-                                            <td>
-                                                <label ng-repeat="recompensa in dbc.concursoActivo.recompensas">
-                                                    Nvl {{recompensa.idTipoRecompensa}}: {{recompensa.remitidos}}/{{recompensa.cantidad}}
-                                                </label>
-                                            </td>
+                                            <td>{{dbc.concursoActivo.fechafin | fechaCorta}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -41,27 +34,6 @@
                             <div class="card-action clearfix">
                                 <div class="pull-right">
                                     <button class="btn btn-info" ng-click="dbc.detalleConcurso(dbc.concursoActivo)">Detalles</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card bordered">
-                            <div class="card-header">
-                                <span class="card-title">Próximo concurso</span>
-                            </div>
-                            <div class="card-content">
-                                <address>
-                                    <strong>Concurso {{dbc.concursoProximo.clave}}</strong>
-                                    <br> {{dbc.concursoProximo.dias}} días para activarse
-                                    <br> Inicia el {{dbc.concursoProximo.fechaInicio}}
-                                    <br> Finaliza el {{dbc.concursoProximo.fechaFin}}
-                                    <br> <span ng-class="dbc.concursoProximo.color">{{dbc.concursoProximo.estado}}</span>
-                                </address>
-                            </div>
-                            <div class="card-action clearfix">
-                                <div class="pull-right">
-                                    <button class="btn btn-primary" ng-click="dbc.configurarConcurso(concurso)">Configurar</button>
                                 </div>
                             </div>
                         </div>
@@ -78,21 +50,21 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Clave</th>
+                                            <th class="text-center">Descripción</th>
                                             <th class="text-center">Inicio</th>
                                             <th class="text-center">Término</th>
                                             <th class="text-center">Participantes</th>
-                                            <th class="text-center">Premios asignados</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Estado</th>
                                             <th class="text-center">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="concurso in dbc.listaConcursos">
-                                            <td class="text-center">{{concurso.clave}}</td>
-                                            <td class="text-center">{{concurso.fechaInicio}}</td>
-                                            <td class="text-center">{{concurso.fechaFin}}</td>
-                                            <td class="text-center">{{concurso.cantidadParticipantes}}</td>
-                                            <td class="text-center">{{concurso.cantidadRecompensas}}</td>
+                                            <td class="text-center">{{concurso.idConcurso}}</td>
+                                            <td class="text-center">{{concurso.descripcion}}</td>
+                                            <td class="text-center">{{concurso.fechaInicio | fechaCorta}}</td>
+                                            <td class="text-center">{{concurso.fechafin | fechaCorta}}</td>
+                                            <td class="text-center">{{concurso.participantes !== null ? concurso.participantes : 0}}</td>
                                             <td class="text-center"><span ng-class="concurso.color">{{concurso.estado}}</span></td>
                                             <td class="text-center">
                                                 <button type="button" 
@@ -103,7 +75,7 @@
                                                 </button>
                                                 <button type="button" 
                                                         class="btn btn-link btn-round" 
-                                                        ng-click="dbc.detalleConcurso(concurso)"
+                                                        ng-click="dbc.configurarConcurso(concurso)"
                                                         title="Configurar">
                                                     <i class="md md-mode-edit"></i>
                                                 </button>
@@ -119,12 +91,10 @@
         </div>
         <div class="col-lg-3 col-md-12">
             <div class="p-20">
-                <h4 class="grey-text m-b-30">Patrocinadores y anunciantes</h4>
                 <div role="tabpanel">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist" ng-init="actionTab=1">
-                        <li role="presentation" class=""><a ng-click="actionTab=1" aria-controls="home" role="tab" data-toggle="tab">Patrocinadores</a></li>
-                        <li role="presentation"><a ng-click="actionTab=2" aria-controls="home" role="tab" data-toggle="tab">Anuncinantes</a></li>
+                        <li role="presentation" class=""><a ng-click="actionTab=1" aria-controls="home" role="tab" data-toggle="tab"><h4>Patrocinadores</h4></a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content m-t-10">
@@ -138,27 +108,8 @@
                                         <div class="timeline-body">
                                             <span>
                                             <ul>
-                                                <li>{{participante.preguntas}} preguntas mensaje</li>
+                                                <li>{{participante.totalPreguntasMensaje}} preguntas mensaje</li>
                                             </ul>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" ng-class="{active: actionTab==2}">
-                            <ul class="timeline">
-                                <li ng-repeat="anunciante in dbc.listaAnunciantes">
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">{{anunciante.organizacion}}</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <span>
-                                                <ul>
-                                                    <li>{{anunciante.campanas}} campañas</li>
-                                                    <li>{{anunciante.banners}} banners activos</li>
-                                                </ul>
                                             </span>
                                         </div>
                                     </div>

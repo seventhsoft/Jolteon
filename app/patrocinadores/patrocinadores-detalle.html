@@ -9,143 +9,82 @@
         </p>
     </div>
     <div class="row">
-    <div class="col-md-3">
-        <div class="card bordered">
-            <div class="card-header">
-                <span class="card-title">Datos generales</span>
-            </div>
-            <div class="card-content">
-                <h4>{{pdc.patrocinador.organizacion}}</h4>
-                <p>Persona de contacto: <strong>{{pdc.patrocinador.nombre}} {{pdc.patrocinador.apaterno}}</strong></p>
-                <p>Teléfono de contacto: <strong>{{pdc.patrocinador.telefono}}</strong></p>
-                <p>Correo electrónico: <strong>{{pdc.patrocinador.correo}}</strong></p>
-            </div>
-            <div class="card-action clearfix">
-                <div class="pull-right">
-                    <button class="btn btn-primary" ng-click="pdc.actualizarPatrocinador()">Actualizar</button>
+        <div class="col-md-3">
+            <div class="card bordered">
+                <div class="card-header">
+                    <span class="card-title">Datos generales</span>
+                </div>
+                <div class="card-content">
+                    <h4>{{pdc.patrocinador.organizacion}}</h4>
+                    <p>Persona de contacto: <strong>{{pdc.patrocinador.nombre}} {{pdc.patrocinador.apaterno}}</strong></p>
+                    <p>Teléfono de contacto: <strong>{{pdc.patrocinador.telefono}}</strong></p>
+                    <p>Correo electrónico: <strong>{{pdc.patrocinador.correo}}</strong></p>
+                </div>
+                <div class="card-action clearfix">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="pdc.actualizarPatrocinador()">Actualizar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-9">
-        <div class="card bordered">
-            <div class="card-header">
-                <span class="card-title">Preguntas mensaje</span>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-full table-full-small">
-                    <thead>
-                        <tr>
-                            <th>Pregunta</th>
-                            <th>Fecha de alta</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="preguntaMensaje in pdc.listaPreguntaMensaje | startFrom:pdc.actualPM * pdc.paginadoPM | limitTo:pdc.paginadoPM ">
-                            <td>{{preguntaMensaje.pregunta.descripcion}}</td>
-                            <td>{{preguntaMensaje.fechaRegistro | fechaCorta}}</td>
-                            <td class="text-center">
-                                <button type="button" ng-click="pdc.actualizarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-edit"></i></button>
-                                <button type="button" ng-click="pdc.eliminarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-action clearfix">
-                <div class="row">
-                    <span class="help-block text-right p-r-20">
-                        <i class="md md-visibility"></i> Editar |
-                        <i class="md md-delete"></i> Eliminar
-                    </span>                    
+        <div class="col-md-9">
+            <div class="card bordered">
+                <div class="card-header">
+                    <span class="card-title">Preguntas mensaje</span>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                      <div class="bs-component" ng-show="pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM) > 1">
-                        <div class="btn-group">
-                          <button class="btn btn-flat btn-default"
-                                  ng-disabled="pdc.actualPM === 0 "
-                                  ng-click="pdc.actualPM=pdc.actualPM-1"
-                                  >Anterior
-                          </button>
-                          <button class="btn btn-flat btn-primary">{{pdc.actualPM + 1}}</button>
-                          <button class="btn btn-flat btn-link">de {{pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM)}}</button>
-                          <button class="btn btn-flat btn-default"
-                                  ng-disabled="pdc.actualPM >= pdc.listaPreguntaMensaje.length / pdc.paginadoPM -1 "
-                                  ng-click="pdc.actualPM=pdc.actualPM+1"
-                                  >Siguiente
-                          </button>
+                <div class="table-responsive">
+                    <table class="table table-full table-full-small">
+                        <thead>
+                            <tr>
+                                <th>Pregunta</th>
+                                <th>Fecha de alta</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="preguntaMensaje in pdc.listaPreguntaMensaje | startFrom:pdc.actualPM * pdc.paginadoPM | limitTo:pdc.paginadoPM ">
+                                <td>{{preguntaMensaje.pregunta.descripcion}}</td>
+                                <td>{{preguntaMensaje.fechaRegistro | fechaCorta}}</td>
+                                <td class="text-center">
+                                    <button type="button" ng-click="pdc.actualizarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-edit"></i></button>
+                                    <button type="button" ng-click="pdc.eliminarPreguntaMensaje(preguntaMensaje)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar pregunta"><i class="md md-delete"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-action clearfix">
+                    <div class="row">
+                        <span class="help-block text-right p-r-20">
+                            <i class="md md-visibility"></i> Editar |
+                            <i class="md md-delete"></i> Eliminar
+                        </span>                    
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                          <div class="bs-component" ng-show="pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM) > 1">
+                            <div class="btn-group">
+                              <button class="btn btn-flat btn-default"
+                                      ng-disabled="pdc.actualPM === 0 "
+                                      ng-click="pdc.actualPM=pdc.actualPM-1"
+                                      >Anterior
+                              </button>
+                              <button class="btn btn-flat btn-primary">{{pdc.actualPM + 1}}</button>
+                              <button class="btn btn-flat btn-link">de {{pdc.totalPaginas(pdc.listaPreguntaMensaje.length,pdc.paginadoPM)}}</button>
+                              <button class="btn btn-flat btn-default"
+                                      ng-disabled="pdc.actualPM >= pdc.listaPreguntaMensaje.length / pdc.paginadoPM -1 "
+                                      ng-click="pdc.actualPM=pdc.actualPM+1"
+                                      >Siguiente
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <button type="button" class="btn btn-primary" ng-click="pdc.agregarPreguntaMensaje()" >Agregar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card bordered">
-            <div class="card-header">
-                <span class="card-title">Recompensas</span>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-full table-full-small">
-                    <thead>
-                        <tr>
-                            <th>Recompensa</th>
-                            <th class="text-center">Tipo</th>
-                            <th class="text-center">Cantidad</th>
-                            <th class="text-center">Asignados</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="recompensa in pdc.listaRecompensas | startFrom:pdc.actualRE * pdc.paginadoRE | limitTo:pdc.paginadoRE ">    
-                            <td>{{recompensa.descripcion}}</td>
-                            <td class="text-center">{{recompensa.tipoRecompensa.descripcion}}</td>
-                            <td class="text-center">{{recompensa.cantidad}}</td>
-                            <td class="text-center">{{recompensa.asignados}}</td>
-                            <td class="text-center">
-                                <button type="button" ng-click="pdc.actualizarRecompensa(recompensa)" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><i class="md md-edit"></i></button>
-                                <button ng-if="recompensa.asignados===0" ng-click="pdc.eliminarRecompensa(recompensa)" type="button" class="btn btn-link btn-round" data-toggle="tooltip" data-placement="top" data-original-title="Borrar recompensa"><i class="md md-delete"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-action clearfix">
-                <div class="row">
-                    <span class="help-block text-right p-r-20">
-                        <i class="md md-visibility"></i> Editar |
-                        <i class="md md-delete"></i> Eliminar
-                    </span>                    
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                      <div class="bs-component" ng-show="pdc.totalPaginas(pdc.listaRecompensas.length,pdc.paginadoRE)>1">
-                        <div class="btn-group">
-                          <button class="btn btn-flat btn-default"
-                                  ng-disabled="pdc.actualRE === 0 "
-                                  ng-click="pdc.actualRE=pdc.actualRE-1"
-                                  >Anterior
-                          </button>
-                          <button class="btn btn-flat btn-primary">{{pdc.actualRE + 1}}</button>
-                          <button class="btn btn-flat btn-link">de {{pdc.totalPaginas(pdc.listaRecompensas.length,pdc.paginadoRE)}}</button>
-                          <button class="btn btn-flat btn-default"
-                                  ng-disabled="pdc.actualRE >= pdc.listaRecompensas.length / pdc.paginadoRE -1 "
-                                  ng-click="pdc.actualRE=pdc.actualRE+1"
-                                  >Siguiente
-                          </button>
+                        <div class="col-sm-6 text-right">
+                            <button type="button" class="btn btn-primary" ng-click="pdc.agregarPreguntaMensaje()" >Agregar</button>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-primary" ng-click="pdc.agregarRecompensa()">Agregar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>

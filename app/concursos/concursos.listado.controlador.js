@@ -32,7 +32,7 @@
         };
         
         function editarConcurso(concurso){
-            Servicio.origen = 2;
+            Servicio.origen = 1;
             Servicio.concurso = concurso;
             location.href="#/concursos/concursos-configurar";
             window.scrollTo(0, 0);

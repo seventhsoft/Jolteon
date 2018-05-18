@@ -18,20 +18,8 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label normal">Mes</label>
-                                    <select class="form-control" ng-model="ccc.concurso.mes">
-                                        <option value="">Elije</option>
-                                        <option value="01">Enero</option>
-                                        <option value="02">Febrero</option>
-                                        <option value="03">Marzo</option>
-                                        <option value="04">Abril</option>
-                                        <option value="05">Mayo</option>
-                                        <option value="06">Junio</option>
-                                        <option value="07">Julio</option>
-                                        <option value="08">Agosto</option>
-                                        <option value="09">Septiembre</option>
-                                        <option value="10">Octubre</option>
-                                        <option value="11">Noviembre</option>
-                                        <option value="12">Diciembre</option>
+                                   <select class="form-control" ng-model="ccc.concurso.mes" ng-options="mes.valor as mes.descripcion for mes in ccc.listaMeses">
+                                        <option value="">Selecciona</option>
                                     </select>
                                 </div>
                             </div>
@@ -67,9 +55,6 @@
                                     <th class="text-center">Nivel</th>
                                     <th class="text-center">Series</th>
                                     <th class="text-center">Tiempo de respuesta</th>
-                                    <th class="text-center">Recompensa</th>
-                                    <th class="text-center">Patrocinador</th>
-                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,32 +65,6 @@
                                     </td>
                                     <td class="text-center">
                                         <input type="number" ng-model="nivel.tiempo" min="0" />
-                                    </td>
-                                    <td class="text-center">
-                                        <p><strong>{{nivel.recompensa.cantidad}}</strong> {{nivel.recompensa.descripcion}}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <p>{{nivel.recompensa.patrocinador.nombre}}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <!-- cuando no hay ninguna recompensa -->
-                                        <button type="button" 
-                                                class="btn btn-link btn-round" 
-                                                ng-click="ccc.agregarRecompensa(nivel)"
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
-                                                title="Asignar">
-                                            <i  ng-class="nivel.recompensa.agrego ? 'md md-edit' : 'md md-add-box' "></i>
-                                        </button>
-                                        <!-- cuando hay recompensa -->
-                                        <button type="button" 
-                                                ng-if="nivel.recompensa.agrego"
-                                                class="btn btn-link btn-round" 
-                                                ng-click="ccc.eliminarRecompensa(nivel)" 
-                                                data-toggle="tooltip" data-placement="top" 
-                                                title="Eliminar">
-                                            <i class="md md-delete"></i>
-                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

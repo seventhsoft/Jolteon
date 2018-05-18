@@ -29,6 +29,7 @@
                     ppmac.listaConcurso=response.data;
                 }
             );
+            console.log(ppmac.pregunta);
         }
         
         function guardar(){
